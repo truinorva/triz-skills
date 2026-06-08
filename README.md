@@ -101,6 +101,7 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | [`root-cause-analysis`](technical-triz/root-cause-analysis/) | Systematic RCA for engineering failures based on scientific principles and physical parameters. |
 | [`root-conflict-analysis`](technical-triz/root-conflict-analysis/) | Root Conflict Analysis (RCA+) — decomposes problems into underlying contradictions. |
 | [`smart-little-people`](technical-triz/smart-little-people/) | Smart Little People (SLP) modelling to overcome psychological inertia. |
+| [`sustainability-assessment`](technical-triz/sustainability-assessment/) | Rapid, expert-estimation sustainability assessment of processes and product-use phases via TRIZ Function Analysis, Circular Economy principles and the UN SDGs — ranks harm hotspots without LCA software. |
 | [`system-description`](technical-triz/system-description/) | System Description (Mini-ISQ) — a structured starting point before other TRIZ tools. |
 | [`system-operator`](technical-triz/system-operator/) | System Operator (9 Boxes / 9 Screens) for time- and hierarchy-based analysis. |
 | [`trimming`](technical-triz/trimming/) | Classical Trimming (rules A, B, C) to simplify systems and cut cost. |
