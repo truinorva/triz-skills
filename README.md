@@ -95,7 +95,7 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | [`interactive-trimming`](technical-triz/interactive-trimming/) | Extended interactive Trimming with rules A, B, C, D, E, X. |
 | [`mpv-analysis`](technical-triz/mpv-analysis/) | Identifies Parameters of Value (PV) and Main Parameters of Value (MPV). |
 | [`patent-analyzer`](technical-triz/patent-analyzer/) | Extracts TRIZ parameters and contradictions from patent texts. |
-| [`physical-contradictions`](technical-triz/physical-contradictions/) | Resolves physical contradictions via the four Separation Principles. |
+| [`physical-contradictions`](technical-triz/physical-contradictions/) | Resolves physical contradictions via two documented strategy sets — the Litvin and the Zlotin/Zusman variant — each linked to the recommended Inventive Principles. |
 | [`problem-operator`](technical-triz/problem-operator/) | Problem-Oriented Nine Screen Approach — solves a problem across a prevention / mitigation / Plan B timeline at all three system levels. |
 | [`resource-analysis`](technical-triz/resource-analysis/) | Discovers and exploits the six TRIZ resource types (MATChEMIB). |
 | [`root-cause-analysis`](technical-triz/root-cause-analysis/) | Systematic RCA for engineering failures based on scientific principles and physical parameters. |
