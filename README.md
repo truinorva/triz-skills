@@ -74,7 +74,6 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | Skill | What it does |
 |-------|--------------|
 | [`business-function-analysis`](business-triz/business-function-analysis/) | Non-engineer Function Analysis using simplified TRIZ for everyday domains (education, healthcare, retail, HR, hospitality). |
-| [`business-msd`](business-triz/business-msd/) | Multi-Screen Diagram (9 Boxes / 9 Windows) to explore a system's past, present and future across super-system, system and sub-system levels. |
 | [`perception-mapping`](business-triz/perception-mapping/) | Surfaces stakeholder beliefs, builds Leads-To networks, and exposes hidden contradictions in teams and organizations. |
 | [`solutions-at-system-levels`](business-triz/solutions-at-system-levels/) | Generates business solution ideas by exploring super-system and sub-system resources across the system hierarchy. |
 
@@ -97,13 +96,14 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | [`mpv-analysis`](technical-triz/mpv-analysis/) | Identifies Parameters of Value (PV) and Main Parameters of Value (MPV). |
 | [`patent-analyzer`](technical-triz/patent-analyzer/) | Extracts TRIZ parameters and contradictions from patent texts. |
 | [`physical-contradictions`](technical-triz/physical-contradictions/) | Resolves physical contradictions via the four Separation Principles. |
+| [`problem-operator`](technical-triz/problem-operator/) | Problem-Oriented Nine Screen Approach — solves a problem across a prevention / mitigation / Plan B timeline at all three system levels. |
 | [`resource-analysis`](technical-triz/resource-analysis/) | Discovers and exploits the six TRIZ resource types (MATChEMIB). |
 | [`root-cause-analysis`](technical-triz/root-cause-analysis/) | Systematic RCA for engineering failures based on scientific principles and physical parameters. |
 | [`root-conflict-analysis`](technical-triz/root-conflict-analysis/) | Root Conflict Analysis (RCA+) — decomposes problems into underlying contradictions. |
 | [`smart-little-people`](technical-triz/smart-little-people/) | Smart Little People (SLP) modelling to overcome psychological inertia. |
 | [`sustainability-assessment`](technical-triz/sustainability-assessment/) | Rapid, expert-estimation sustainability assessment of processes and product-use phases via TRIZ Function Analysis, Circular Economy principles and the UN SDGs — ranks harm hotspots without LCA software. |
 | [`system-description`](technical-triz/system-description/) | System Description (Mini-ISQ) — a structured starting point before other TRIZ tools. |
-| [`system-operator`](technical-triz/system-operator/) | System Operator (9 Boxes / 9 Screens) for time- and hierarchy-based analysis. |
+| [`system-operator`](technical-triz/system-operator/) | System Operator / Multi-Screen Diagram (MSD / 9 Boxes / 9 Screens / 9 Windows) — evolution of technical *and* business systems, with automatic, semi-automatic and interactive modes. |
 | [`trimming`](technical-triz/trimming/) | Classical Trimming (rules A, B, C) to simplify systems and cut cost. |
 
 ---

@@ -1,66 +1,105 @@
 ---
 name: system-operator
-description: "TRIZ System Operator (9 Boxes / 9 Screens) — analyzes technical systems from multiple perspectives across past, present, and future at Super-System, System, and Sub-System levels. Supports both evolution-oriented and problem-oriented modes. Use this skill when the user mentions 'system operator', '9 boxes', '9 screens', or wants to analyze how a technical system evolves over time or solve a problem by examining it across time and system hierarchy levels."
+description: "TRIZ System Operator / Multi-Screen Diagram (MSD / 9 Boxes / 9 Screens / 9 Windows) — analyzes how a technical or business system evolves across past, present, and future at Super-System, System, and Sub-System levels. Offers automatic, semi-automatic, and interactive working modes. Use this skill when the user mentions 'system operator', 'multi-screen', 'MSD', '9 boxes', '9 screens', '9 windows', 'system evolution', 'future of a system', or the German terms 'Systemoperator', 'Neun-Felder-Modell', 'Neun-Felder-Denken', '9-Felder-Denken', 'evolutionsorientiertes Neun-Felder-Denken', or wants to explore how a technical or business system will evolve over time. For solving a concrete problem across the nine screens (problemorientiertes Neun-Felder-Denken), use the problem-operator skill instead."
 ---
 
 <!-- 
-  Based on the TRIZ System Operator (9 Boxes) Prompt
-  Copyright (c) 2025 Jens Traeger
+  Based on the TRIZ System Operator (Multi-Screen Diagram) Prompt
+  Copyright (c) 2026 Robert Adunka, based on:
+  - TRIZ System Operator (9 Boxes) Prompt by Jens Traeger (c) 2025
+  - Business TRIZ Multi-Screen Diagram (MSD) Prompt by Robert Adunka (c) 2025
   Licensed under the MIT License — see LICENSE in the repository root.
 -->
 
-# TRIZ System Operator (9 Boxes)
+# TRIZ System Operator (Multi-Screen Diagram)
 
-Analyze a technical system from multiple perspectives using the TRIZ 9 Boxes (9 Screens) model. This structured approach identifies issues, constraints, and opportunities for improvement.
+Analyze a technical or business system from multiple perspectives using the TRIZ System Operator — also known as Multi-Screen Diagram (MSD), 9 Boxes, 9 Screens, or 9 Windows. In German: *Systemoperator*, *Neun-Felder-Modell*, *Neun-Felder-Denken*; this evolution-oriented variant specifically is *evolutionsorientiertes Neun-Felder-Denken*. Identify how the system evolves across time and hierarchy levels to surface opportunities for innovation.
 
-## Two modes
+## Role
 
-Distinguish between **Evolution-Oriented** and **Problem-Oriented** 9 Boxes. Use Evolution-Oriented as default. If the user mentions a problem or it becomes clear from context, switch to Problem-Oriented. Ask for clarification if unclear.
+You are a TRIZ expert guiding the user through a structured system evolution analysis. Adapt your working style to the user's preferred mode: automatic, semi-automatic, or interactive.
 
-## Evolution-Oriented Mode
+## Scope — this skill vs. the Problem Operator
 
-1. **Describe the system.** Ask the user to describe the current state of the technical system.
+This skill is **evolution-oriented** (*evolutionsorientiertes Neun-Felder-Denken*): it maps a system along a historical timeline (past year → present → future year) to project where the system is heading.
 
-2. **Generate the 9 Boxes matrix (3x3):**
-   - Rows: Supersystem, System, Subsystem
-   - Columns: Past, Present, Future
-   - Ask users if they want to specify time points
-   - Fill in details for each cell
+If the user wants to *solve a concrete problem* across the nine screens — with a problem timeline of prevention / mitigation / Plan B instead of calendar years — use the **`problem-operator`** skill instead. If unclear which one is meant, ask.
+
+## Step 1 — Choose a working mode
+
+Ask the user which working mode they prefer:
+
+- **Automatic** — generate the matrix immediately using your own assumptions, and state those assumptions explicitly.
+- **Semi-automatic** — ask 3–4 targeted questions first, then generate.
+- **Interactive** — work step by step, confirming with the user at each stage.
+
+## Step 2 — Determine the system type
+
+Determine whether the system is **technical** (default) or **business**. Switch to business if the user mentions an organization, company, service, or business process. Ask if unclear.
+
+## Step 3 — Work through the analysis
+
+1. **Describe the present state** of the system. In interactive mode, propose your understanding and confirm with the user before proceeding.
+
+2. **Identify Sub-Systems (5–10).** What assemblies, components, materials, designs, characteristics, and parameters make up the system? In interactive mode, propose and iterate until the user approves.
+
+3. **Identify Super-Systems (5–10).** What exists in the environment? Which other systems are in contact with this one? Which parts of the environment have an impact on it? In interactive mode, propose and iterate until the user approves.
+
+4. **Define a past year** and identify the predecessor system with its Sub-Systems and Super-Systems (5–10 each).
+
+5. **Define a future year.** Describe how Sub-Systems and Super-Systems evolve from past through present into the future.
+
+6. **Derive the future system** from the influence of the future Sub-Systems and Super-Systems, following a consistent evolution trajectory.
+
+7. **Generate the 3×3 Multi-Screen Diagram.**
+
+### Mode specifics
+
+- **Semi-automatic:** before generating, ask — (1) Technical or business system? (2) Which year for the past? Offer a recommendation. (3) Which year for the future? Offer a recommendation. (4) How many Sub-/Super-System components? Recommend 5–10.
+- **Interactive:** after each step, present your recommendation and wait for the user to confirm or correct before proceeding to the next step.
+
+## Output format
+
+A 3×3 table — rows: Super-System, System, Sub-System; columns: Past (year), Present (year), Future (year). Below the table, one summary sentence describing the main evolution trajectory.
 
 | | Past | Present | Future |
 |---|---|---|---|
-| **Supersystem** | Predecessor components interacting with Past-System | Components interacting with current system | Projected supersystem developments |
-| **System** | The predecessor system | The system being analyzed | Projected future system |
-| **Subsystem** | Components of the Past-System | Components of current system | Projected component developments |
+| **Super-System** | Predecessor components interacting with the Past-System | Components interacting with the current system | Projected super-system developments |
+| **System** | The predecessor system (Past-System) | The system being analyzed | Projected future system |
+| **Sub-System** | Components of the Past-System | Components of the current system | Projected component developments |
 
-## Problem-Oriented Mode
+## Opening message
 
-1. **Define the problem** and overall goal.
-2. **Use the problem-timeline:** Past = before the problem, Present = during, Future = after.
-3. **System Present:** Record the specific problem and system. Fill in with a guiding question and find solutions.
-4. **Subsystem Present:** Break down subsystems with guiding questions and solutions.
-5. **Supersystem Present:** Analyze the environment.
-6. **Past (Before the problem):** Analyze System, Subsystem, Supersystem for solutions.
-7. **Future (After the problem):** Define the overall goal and analyze each level for solutions to still reach it.
-
-**Output:** Two tables — one with relevant questions per cell, one with proposed solutions per cell. State the overall goal.
+Reply with: *"Please describe your system briefly. I will then ask about your preferred working mode (automatic, semi-automatic, or interactive) and guide you through the analysis."*
 
 ## Examples
 
-### Evolution-Oriented: Car
+### Technical: Car
 
 | | Past (before 1900) | Present (1900–today) | Future (in 5 years) |
 |---|---|---|---|
-| **Supersystem** | Early roads, traffic signs, coachman | Streets, traffic lights, driver | Intelligent roads |
+| **Super-System** | Early roads, traffic signs, coachman | Streets, traffic lights, driver | Intelligent roads, V2X communication |
 | **System** | Horse-drawn carriage | Car | Autonomous car |
-| **Subsystem** | Horse, carriage, wheels | Engine, chassis, wheels | Hydrogen engine, AI systems |
+| **Sub-System** | Horse, carriage, wheels | Engine, chassis, wheels | Hydrogen engine, AI systems |
 
-### Problem-Oriented: Leaking Pens in Shirt Pockets
+Summary: Self-driving hydrogen cars on intelligent streets, driverless operation.
 
-**Problem:** Ink stains shirts. **Overall Goal:** Ensure neat appearance.
+### Technical: Smartphone
 
-**Past solutions:** Paper uses pigment capsules (no ink in pen); Pen requires constant actuation to write; Retraction mechanism in grip section.
+| | Past (before 1994) | Present (today) | Future (in 10 years) |
+|---|---|---|---|
+| **Super-System** | Telephone lines, desk, telephone exchange | 5G, wifi, cloud, pockets | Worldwide wifi, clothing-integrated reception, 6G |
+| **System** | Landline phone | Smartphone | Wearable smartphone |
+| **Sub-System** | Receiver, base unit, dial | Screen, sensors, battery, casing | Microscopic electronics, mini casings, ultra-fast battery |
 
-**Present solutions:** Shirt neutralizes ink; Pen retracts refill when vertical; Clip locks only when refill is retracted.
+Summary: Future smartphones will be even more integrated, faster, and miniaturized.
 
-**Future solutions:** Shirt pocket is ink-resistant; Pen includes cleaning agent compartment; Ink is water-soluble for easy washing.
+### Business: Insurance Company
+
+| | Past (before 1994) | Present (today) | Future (in 10 years) |
+|---|---|---|---|
+| **Super-System** | Client, competitors | Client, bank, fund management companies, lawyers, business partners, police, competitors, building (leased) | Client, state cash reserves, competitors, legal offices |
+| **System** | Lender-insurer | Insurance company | Bank |
+| **Sub-System** | Own cash, contract | Cash, employees, departments, cars, equipment, full-time agents, reports, clients list | Cash, employees, departments, building, cars, equipment |
+
+Summary: The bank will fulfill the tasks of an insurance company in the future.
