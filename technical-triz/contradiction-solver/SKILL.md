@@ -1,6 +1,6 @@
 ---
 name: contradiction-solver
-description: "TRIZ Contradiction Solver and 40 Inventive Principles — resolves engineering and physical contradictions using the Altshuller Matrix, Matrix 2003, and the 40 Inventive Principles. Use this skill whenever the user mentions 'contradiction', 'inventive principles', '40 principles', 'Altshuller', 'Matrix 2003', 'engineering contradiction', 'physical contradiction', 'IF THEN BUT', or wants to solve a technical trade-off, improve a system parameter without worsening another, or apply TRIZ contradiction analysis."
+description: "TRIZ Contradiction Solver and 40 Inventive Principles — resolves engineering and physical contradictions using the Altshuller Matrix, Matrix 2003, and the 40 Inventive Principles. Use this skill whenever the user mentions 'contradiction', 'inventive principles', '40 principles', 'Altshuller', 'Matrix 2003', 'engineering contradiction', 'physical contradiction', 'IF THEN BUT', or wants to solve a technical trade-off, improve a system parameter without worsening another, or apply TRIZ contradiction analysis. For a purely physical contradiction — one parameter of one component required to take two opposing values — prefer the 'physical-contradictions' skill, which carries both documented strategy sets and the applicability check; use this skill for engineering contradictions, matrix lookups, and free application of the 40 Inventive Principles."
 ---
 
 <!-- 
@@ -24,6 +24,8 @@ All reference data is in the `references/` directory. Read files as needed:
 - **Process guides:** `Solving_Engineering_Contradictions_Altshuller_Matrix.txt`, `Solving_Engineering_Contradictions_Matrix_2003.txt`, `Solving_Physical_Contradictions.txt`
 - **Examples:** `examples.txt`
 
+The process guides tell you to look principles up in "40 Inventive Principles Booklet EN.pdf" / "40 Innovationsprinzipien Booklet DE.pdf". Those are historical file names — use `40_Inventive_Principles_EN.md` / `40_Innovationsprinzipien_DE.md` in `references/` instead.
+
 ## Interaction flow
 
 1. **Problem input.** Ask the user for a problem statement or task. Wait for user input.
@@ -32,7 +34,7 @@ All reference data is in the `references/` directory. Read files as needed:
 
 3. **Apply the appropriate method:**
    - If an engineering contradiction is given: ask whether to use the Altshuller Matrix or Matrix 2003, then follow the corresponding process guide step by step
-   - If a physical contradiction is given: follow the process in `Solving_Physical_Contradictions.txt` step by step
+   - If a physical contradiction is given: prefer the `physical-contradictions` skill; if it is not available, follow the process in `Solving_Physical_Contradictions.txt` step by step, with the corrections under *Solving physical contradictions* below
    - If no contradiction is specified: apply the 40 Inventive Principles directly and analyze their applicability to the user's case
 
 4. **System context.** When analyzing the technical system, classify it into super-system, technical system, and sub-system via component analysis.
@@ -53,7 +55,13 @@ A situation where a parameter must simultaneously take two opposing values for v
 
 Example: "A boat should be wide TO prevent capsizing, AND it should be narrow TO make it go fast."
 
-Always include both reasons — they are necessary to identify solutions.
+Always include both reasons — they are necessary to identify solutions. A justification takes one of two forms: a goal or requirement to be achieved, or a law of nature or inherent property. **A requirement without such a justification is not a contradiction — it points to a solution.**
+
+Full form, and the form to use when handing over to the `physical-contradictions` skill:
+
+> **[Parameter]** of **[component]** SHOULD be **[value 1]** IN ORDER TO **[justification 1]** AND SHOULD be **[value 2]** IN ORDER TO **[justification 2]**.
+
+plus the **Key Problem**: *"How can we [positive effect] without [negative effect]?"*
 
 ### Nomenclature
 In English: refer to Genrikh Saulovich Altshuller and the Altshuller Matrix.
@@ -69,7 +77,23 @@ For the **Matrix 2003**: read `Solving_Engineering_Contradictions_Matrix_2003.tx
 
 ## Solving physical contradictions
 
-Read `Solving_Physical_Contradictions.txt` and follow its instructions step by step. Help the user express a parameter with two opposing values and justify both sides.
+**Hand over if you can.** If the `physical-contradictions` skill is available, use it instead of the process below. It carries both documented strategy sets — the Litvin variant and the Zlotin/Zusman variant — with binding EN/DE terminology, an explicit applicability check, and the recommended Inventive Principles per strategy. Hand the contradiction over in the full form given under *Key definitions*.
+
+Otherwise follow `Solving_Physical_Contradictions.txt` step by step, and apply the corrections below. Help the user express a parameter with two opposing values and justify both sides.
+
+**Correction to that file.** It lists IP #13 (The Other Way Around) under *Satisfying*. The Litvin 1993 table assigns #13 to *Bypassing* only — do not offer it under *Satisfying*. Every other principle assignment in the file matches the Litvin table.
+
+**Terminology.** The binding names of the six methods are *Separation in space*, *Separation in time*, *Separation in relation*, *Separation in system level*, *Satisfy*, *Bypass* (DE: *Separation im Raum*, *Separation in der Zeit*, *Separation in der Beziehung*, *Separation durch Systemübergang*, *Befriedigung*, *Umgehung*). The file's variant wordings — "separation at the system level", "separation in place", "satisying" — denote the same six methods; use the binding names in your answer.
+
+**Applicability.** Judge each method and give a reason for every "not applicable":
+
+- *Space* and *time* apply only if the places or periods concerned do **not** overlap. Different but overlapping periods are not enough — a door is a compromise, not a resolution.
+- *Relation* requires that the two justifications originate from two different components — **components of the super-system count** — and that a usable property in which they differ can be found.
+- *System level* is in principle always applicable; the question is only whether a concrete solution can be derived from it. Never mark it "not applicable" without having tried.
+- *Satisfy* fits when the two requirements refer to almost — but not exactly — the same property (different frames of reference, smart materials, scientific effects).
+- *Bypass* fits when the contradiction follows from the chosen **operating principle** rather than from the **purpose** of the system. Last resort.
+
+Work the six methods in the order given by the file, document ideas for **every** applicable method, and cite each principle with number and name — never numbers alone.
 
 ## Ambiguous tasks (no clear contradiction)
 
