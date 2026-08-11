@@ -1,17 +1,17 @@
 # IP #1 Zerlegen, Zerteilen
 
-Synonyme: Segmentierung, Segmentieren, Zerlegung, Zerstückelung
+*Synonyme:* Segmentierung, Segmentieren, Zerlegung, Zerstückelung
 
 1. Das Objekt in unabhängige Teile zerlegen: Damit ein schwedisches Möbelhaus mehr Möbel verkaufen kann, wurden die Möbelstücke in unabhängige Teile zerlegt, die nach einem Bauplan leicht zusammengesetzt werden können. Man muss also nicht den ganzen Schrank in einem Stück kaufen und transportieren, wie es früher der Fall war.
 2. Das Objekt leicht zerlegbar gestalten: Es gibt Zahnbürsten, deren Bürstenkopf vom Griff der Zahnbürste leicht abgenommen werden kann. Das hat den Vorteil, dass man den alten Kopf durch einen neuen ersetzen kann, ohne den Griff auszutauschen.
-3. Das Objekt nach einer Bedingung oder einem Parameter zerlegbar ausführen: Es gibt Tische und Bänke mit einklappbaren Beinen. Die Beine sind vom Hauptteil getrennt und beweglich gemacht worden. Je nachdem, ob man sie benutzen oder transportieren will, werden die Beine aus- oder eingeklappt. 
+3. Das Objekt nach einer Bedingung oder einem Parameter zerlegbar ausführen: Es gibt Tische und Bänke mit einklappbaren Beinen. Die Beine sind vom Hauptteil getrennt und beweglich gemacht worden. Je nachdem, ob man sie benutzen oder transportieren will, werden die Beine aus- oder eingeklappt.
 4. Den Grad der Zerlegung erhöhen: Je feiner das Magnetpulver ist, desto besser können die Feldlinien eines Magnetfelds sichtbar gemacht werden.
-5. Übergang in ein Mikro-System:  Wird magnetisches Pulver so fein gemahlen, dass die Partikel in einer stabilen Suspension mit Öl bleiben, entsteht ein Ferrofluid.
+5. Übergang in ein Mikro-System: Wird magnetisches Pulver so fein gemahlen, dass die Partikel in einer stabilen Suspension mit Öl bleiben, entsteht ein Ferrofluid.
 ----------
 
 # IP #2 Abtrennen
 
-*Synonyme:* Abtrennung, Wegnehmen, Ausgliedern, Extraktion,  gesonderte Behandlung (des Störenden oder des einzig Nötigen)
+*Synonyme:* Abtrennung, Wegnehmen, Ausgliedern, Extraktion, gesonderte Behandlung (des Störenden oder des einzig Nötigen)
 
 1. Einen störenden Teil oder eine störende Eigenschaft (Funktion) von einem Objekt abtrennen: Normale Bleistifte müssen angespitzt werden und werden mit der Zeit kürzer. Bei einem Druckbleistift ist die Graphitmine nicht fest mit dem Stift verbunden. Dadurch kann einfach eine neue Mine verwendet werden, während der Stifte selbst nicht verschleißt.
 2. Den einzig notwendigen Teil oder die einig notwendige Eigenschaft (Funktion) hervorheben oder abtrennen: Um Ernteschäden zu verhindern, müssen Vögel von den Feldern ferngehalten werden. Da die Landwirte ihre Felder nicht ununterbrochen selbst bewachen möchten, verwenden sie Vogelscheuchen. Vogelscheuchen imitieren die visuellen und akustischen Eigenschaften des Menschen, die den gewünschten Effekt des Verscheuchens der Vögel haben.
@@ -58,7 +58,7 @@ Synonyme: Segmentierung, Segmentieren, Zerlegung, Zerstückelung
 
 1. Ein Objekt ist in einem anderen enthalten, dass sich wiederum im Inneren des nächsten befindet usw.: Ein faltbarer Trekkingbecher ermöglicht einen platzsparenden Transport (z. B. bei Rucksacktouren).
 2. Ein Objekt befindet sich in oder verläuft durch ein Loch oder einen Hohlraum eines anderen Objekts: Der Griff einer Reisezahnbürste dient auch als eine Schutzkappe für den Bürstenkopf, wenn dieser für den Transport demontiert wird.
-3. Teleskopische Objekte oder Systeme: Teleskopierbarer, einziehbarer Zeigestab, der leicht in die Tasche passt, um ihn mitzunehmen.
+3. Teleskopische Objekte oder Systeme: Teleskopierbarer, einziehbarer Zeigestab, der leicht in die Tasche passt, um ihn mitzunehmen. Eine Teleskop-Autoantenne, die eingefahren werden kann, wenn das Auto in einer Waschanlage gereinigt wird oder um Vandalismus zu vermeiden, wenn das Auto geparkt ist.
 ----------
 
 # IP #8 Gegengewicht
@@ -95,7 +95,7 @@ Synonyme: Segmentierung, Segmentieren, Zerlegung, Zerstückelung
 1. Unzureichende Zuverlässigkeit eines Systems durch zuvor getroffene Gegenmaßnahmen kompensieren: (1) Ein Überdruckventil verhindert das Bersten von Rohren oder Tanks, indem es die Flüssigkeit oder das Gas ablässt, wenn der Druck zu hoch ist. (2) Der Airbag im Auto verhindert schwere Verletzungen, indem er ein Gaspolster bildet, bevor der Kopf das Lenkrad berührt. (3) Schutzhüllen für Handy federn Stürze und Schläge ab und schützen so das Gerät.
 ----------
 
-# IP #12 Äquipotentialprinz
+# IP #12 Äquipotentialprinzip
 
 *Synonyme:* Äquipotential, Äquipotentialität, kürzester Weg (ohne Anheben und Absenken des Objekts) Gleichgewicht, äquipotentieller Transport (auf gerader oder kreisförmiger Linie ohne Anheben und Absenken), „Vor-Ort“-Arbeitsweise, Dinge auf die gleiche Ebene bringen, Spannungen beseitigen
 
@@ -111,7 +111,7 @@ Synonyme: Segmentierung, Segmentieren, Zerlegung, Zerstückelung
 *Synonyme:* Umkehrung, Vereinbarung des Unvereinbaren, entgegengesetzte Wirkung, Inversion, Andersherum, der umgekehrte Weg
 
 1. Anstelle der durch die Bedingungen der Aufgabe vorgeschriebenen Wirkung, die umgekehrte Wirkung anstreben: (1) Tintenschreiber sind Handschreibgeräte, sie dienen dazu, "Tinte auf Papier zu bringen". Chemische Tintenlöscher können ebenfalls als Handschreibgeräte betrachtet werden, bewirken aber genau das Gegenteil: Sie entfernen Tinte vom Papier und können daher für Korrekturen verwendet werden. (2) Prüfen der Dichtheit eines Kraftstofftanks, indem dieser mit Druckluft gefüllt und in Wasser getaucht wird. Die Blasen sind leichter zu erkennen als langsame Flüssigkeitslecks.
-2. Bewegliche Teile fest und feste Teile beweglich machen: Rolltreppen (Fahrtreppen): Im Gegensatz zu einer herkömmlichen Treppe mit starren Stufen bewegen sich die Stufen, während die Person, die die Rolltreppe benutzt, stillsteht. Ein Laufband (zum Gehen oder Laufen auf der Stelle) oder ein Hamsterrad. 
+2. Bewegliche Teile fest und feste Teile beweglich machen: Rolltreppen (Fahrtreppen): Im Gegensatz zu einer herkömmlichen Treppe mit starren Stufen bewegen sich die Stufen, während die Person, die die Rolltreppe benutzt, stillsteht. Ein Laufband (zum Gehen oder Laufen auf der Stelle) oder ein Hamsterrad.
 3. Das Objekt (oder den Prozess) "auf den Kopf" stellen bzw. umkehren: (1) Reinigen eines Behälters durch Umdrehen und Einspritzen von Wasser von unten. (2) Ein Fahrrad auf den Lenker und den Sattel stellen, um die Fahrradkette oder die Reifen zu wechseln.
 ----------
 
@@ -227,7 +227,7 @@ Synonyme: Segmentierung, Segmentieren, Zerlegung, Zerstückelung
 *Synonyme:* Kopieren
 
 1. Verwenden einer vereinfachten und billigen Kopie anstelle eines komplexen, teuren, zerbrechlichen oder schlecht handhabbaren Objekts: (1) Repliken von teurem Schmuck und Kunstgegenständen, Wechsel des Materials von teuer (Diamanten, Metall) zu billig (Plastik). (2) E-Book, Verwendung einer digitalen Kopie anstelle einer gedruckten Buchversion.
-2. Ersetzen eines Elements (Objekt oder System von Objekten) durch seine optische oder digitale Abbildung oder Kopie. Dieses Unterprinz# IP wird meist auf Messprobleme angewendet, z. B. Zählen und Messen von gefährlichen, giftigen, kleinen, extrem großen physischen Teilen oder Teilen mit Parametern, die sonst schwer zu handhaben oder zugänglich sind: (1) Zählen von Fischen in einem Aquarium durch Anfertigen eines Fotos. Die gleich aussehenden Fische stehen auf dem Foto still und können bequem gezählt werden. (2) Zur Messung von Teilen eine Kopie (visuell - Projektion oder Schatten; physisch - Foto, Rapid-Prototyping-Teil) anstelle des Originals verwenden.
+2. Ersetzen eines Elements (Objekt oder System von Objekten) durch seine optische oder digitale Abbildung oder Kopie. Dieses Unterprinzip wird meist auf Messprobleme angewendet, z. B. Zählen und Messen von gefährlichen, giftigen, kleinen, extrem großen physischen Teilen oder Teilen mit Parametern, die sonst schwer zu handhaben oder zugänglich sind: (1) Zählen von Fischen in einem Aquarium durch Anfertigen eines Fotos. Die gleich aussehenden Fische stehen auf dem Foto still und können bequem gezählt werden. (2) Zur Messung von Teilen eine Kopie (visuell - Projektion oder Schatten; physisch - Foto, Rapid-Prototyping-Teil) anstelle des Originals verwenden.
 3. Wenn bereits eine optische Kopie verwendet wird, Ersetzen der Kopie durch Abbilder (Kopien) im infraroten oder ultravioletten Bereich. Verwenden von Röntgenaufnahmen: (1) Wärmebildkamera mit der die Temperaturverteilung von Objekten sichtbar gemacht werden kann. (2) Verwendung von Röntgenaufnahmen zur zerstörungsfreien Erkennung von Fehlstellen (Lunkern) in Metallteilen.
 ----------
 
@@ -238,7 +238,7 @@ Synonyme: Segmentierung, Segmentieren, Zerlegung, Zerstückelung
 1. Ersetzen eines teuren Objekts durch mehrere billigere Objekte, wobei auf bestimmte Eigenschaften verzichtet wird (z.B. Lebensdauer): (1) Papiertaschentücher haben Stofftaschentücher für die Körperpflege ersetzt, da sie nach Gebrauch weggeworfen werden. (2) Tageslinsen können nur für eine kurze Zeit getragen werden, sind aber auch wesentlich billiger als länger haltbare Monatslinsen. (3) Ein Einwegrasierer ist ein billiger und kurzlebiger Gegenstand. Anstelle eines robusten, wiederverwendbaren Rasierers mit auswechselbaren Klingen ist ein Einwegrasierer sehr einfach aufgebaut, um die Entwicklungs- und Produktionskosten zu minimieren. (4) Eine (sterile) Spritze und Nadel wird nach der Injektion weggeworfen.
 ----------
 
-# IP #28 Ersatz mechanischer Wirkprinz# IPien
+# IP #28 Ersatz mechanischer Wirkprinzipien
 
 *Synonyme:* mechanische Substitution, Mechanik ersetzen, Übergang zu höheren Formen, Verwenden von Magneten, Ersatz mechanischer Schaltungen, Ersatz mechanischer Systeme und Schemata, Verfahren des Ersatzes oder Ablösung mechanischer Wirkprinzipien (Übergang zu höheren Bewegungsformen und Feldern)
 
@@ -333,9 +333,9 @@ Synonyme: Segmentierung, Segmentieren, Zerlegung, Zerstückelung
 
 1. Ersetzen von gewöhnlicher Luft durch mit Sauerstoff angereicherte Luft: (1) Einige Reinigungsmittel verwenden Oxidationsmittel, um Flecken besser zu entfernen als ein normales Reinigungsmittel. (2) In Blondierungsmitteln wird Wasserstoffperoxid eingesetzt, um Farbpigmente in den Haaren oxidativ zu zerstören und die Haare dadurch zu bleichen.
 2. Angereicherte Luft durch reinen Sauerstoff ersetzen: Reiner Sauerstoff wird mit einer Lanze durch geschmolzenes Roheisen geblasen, um kohlenstoffarmen Stahl herzustellen.
-3. Luft oder Sauerstoff ionisierender Strahlung aussetzen: In Gegenwart von Luft bzw. Sauerstoff können ionisierende Strahlen wie Gammastrahlen Kunststoffmoleküle aufspalten (Kettenspaltung). Durch diese Aufspaltung, die durch Sauerstoff unterstützt wird, entsteht in einigen Kunststoffen ein dichteres Netzwerk, das die Festigkeit und Gasbarriere bei der Verwendung für Lebensmittelverpackungen verbessert. 
+3. Luft oder Sauerstoff ionisierender Strahlung aussetzen: In Gegenwart von Luft bzw. Sauerstoff können ionisierende Strahlen wie Gammastrahlen Kunststoffmoleküle aufspalten (Kettenspaltung). Durch diese Aufspaltung, die durch Sauerstoff unterstützt wird, entsteht in einigen Kunststoffen ein dichteres Netzwerk, das die Festigkeit und Gasbarriere bei der Verwendung für Lebensmittelverpackungen verbessert.
 4. Verwenden von ionisiertem Sauerstoff: Ionisatoren erzeugen elektrisch geladene Sauerstoffmoleküle (Ionen) in der Luft. Diese Ionen bleiben an Staub, Pollen und sogar einigen Keimen hängen, wodurch sie schwer werden und zu Boden fallen. Dies trägt zur Luftreinigung bei, ist aber möglicherweise nicht bei allen Schadstoffen wirksam.
-5. Verwenden von Ozon: Ozon, eine reaktive Form des Sauerstoffs (Molekül aus 3 statt 2 Atomen), bekämpft Gerüche. In leerstehenden Räumen oder Fahrzeugen setzen Ozongeneratoren Ozon frei, um Geruchsmoleküle aufzuspalten und unangenehme Gerüche zu beseitigen. 
+5. Verwenden von Ozon: Ozon, eine reaktive Form des Sauerstoffs (Molekül aus 3 statt 2 Atomen), bekämpft Gerüche. In leerstehenden Räumen oder Fahrzeugen setzen Ozongeneratoren Ozon frei, um Geruchsmoleküle aufzuspalten und unangenehme Gerüche zu beseitigen.
 ----------
 
 # IP #39 Träges Medium/inerte Atmosphäre

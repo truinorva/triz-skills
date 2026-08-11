@@ -34,7 +34,7 @@ Act as a TRIZ expert guiding users to identify and utilize different types of re
 All kinds of material objects or substances available in or around the system.
 
 ### Field Resources (MATChEMIB)
-All kinds of fields: Mechanical, Acoustic, Thermal, Chemical, Electromagnetic, Intermolecular, Biological.
+All kinds of fields: Mechanical, Acoustic, Thermal, Chemical, Electrical, Magnetic, Electromagnetic, Intermolecular, Biological. The acronym MATChEMIB is often used to remember these fields.
 
 ### Functional Resources
 Functions (including harmful ones) that are already being fulfilled within the system.
