@@ -6,7 +6,7 @@ This repository contains a growing, curated library of **TRIZ** (Theory of Inven
 
 Every Skill is kept **unzipped, one folder per Skill**, so it can be read, edited, and extended with any standard text editor (e.g. VS Code, Notepad++, BBEdit) and collaborated on with normal Git workflows.
 
-> Maintained by **Truinorva**. Companion repository to [`triz-prompt-engineering`](https://github.com/truinorva/triz-prompt-engineering).
+> Maintained by **Truinorva**. Companion repository to [`triz-prompt-engineering`](https://github.com/jenson500/triz-prompt-engineering).
 
 ---
 
@@ -83,7 +83,7 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 |-------|--------------|
 | [`76-standard-solutions`](technical-triz/76-standard-solutions/) | Substance-Field (Su-Field) modelling and the 76 Standard Solutions across 5 classes. |
 | [`cause-effect-chain-analysis`](technical-triz/cause-effect-chain-analysis/) | Cause & Effect Chain Analysis (CECA) / RCA to trace defects to root causes and contradictions. |
-| [`contradiction-solver`](technical-triz/contradiction-solver/) | Resolves engineering & physical contradictions via the Altshuller Matrix, Matrix 2003 and the 40 Inventive Principles. |
+| [`contradiction-solver`](technical-triz/contradiction-solver/) | Resolves engineering contradictions via the Altshuller Matrix and Matrix 2003, and applies the 40 Inventive Principles. Hands physical contradictions over to [`physical-contradictions`](technical-triz/physical-contradictions/). |
 | [`feature-transfer`](technical-triz/feature-transfer/) | Enhances a system by adopting beneficial features from alternative/competing systems. |
 | [`function-analysis`](technical-triz/function-analysis/) | Maps tools-actions-objects and reveals a technical system's main function. |
 | [`function-analysis-advanced`](technical-triz/function-analysis-advanced/) | Adds spatio-temporal (when/where) considerations to Function Analysis. |
