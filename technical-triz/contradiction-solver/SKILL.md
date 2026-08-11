@@ -1,6 +1,6 @@
 ---
 name: contradiction-solver
-description: "TRIZ Contradiction Solver and 40 Inventive Principles — resolves engineering and physical contradictions using the Altshuller Matrix, Matrix 2003, and the 40 Inventive Principles. Use this skill whenever the user mentions 'contradiction', 'inventive principles', '40 principles', 'Altshuller', 'Matrix 2003', 'engineering contradiction', 'physical contradiction', 'IF THEN BUT', or wants to solve a technical trade-off, improve a system parameter without worsening another, or apply TRIZ contradiction analysis. For a purely physical contradiction — one parameter of one component required to take two opposing values — prefer the 'physical-contradictions' skill, which carries both documented strategy sets and the applicability check; use this skill for engineering contradictions, matrix lookups, and free application of the 40 Inventive Principles."
+description: "TRIZ Contradiction Solver and 40 Inventive Principles — resolves engineering and physical contradictions using the Altshuller Matrix, Matrix 2003, and the 40 Inventive Principles. Use this skill whenever the user mentions 'contradiction', 'inventive principles', '40 principles', 'Altshuller', 'Matrix 2003', 'engineering contradiction', 'technical contradiction', 'technischer Widerspruch', 'physical contradiction', 'physikalischer Widerspruch', 'IF THEN BUT', 'WENN DANN ABER', or wants to solve a technical trade-off, improve a system parameter without worsening another, or apply TRIZ contradiction analysis. For a purely physical contradiction — one parameter of one component required to take two opposing values — prefer the 'physical-contradictions' skill, which carries both documented strategy sets and the applicability check; use this skill for engineering contradictions, matrix lookups, and free application of the 40 Inventive Principles."
 ---
 
 <!-- 
@@ -45,6 +45,8 @@ The process guides tell you to look principles up in "40 Inventive Principles Bo
 A statement where improving one feature leads to deterioration of another.
 - English: "IF ..., THEN ..., BUT ..."
 - German: "WENN ..., DANN ..., ABER ..."
+
+**Both names mean the same thing.** *Engineering contradiction (EC)* and *technical contradiction (TC)* are two names for one concept — a parametric model in which improving one parameter of the engineering system worsens another. Understand either term when the user uses it, in English or German (*technischer Widerspruch*). The house style of the Truinorva glossary leads with *technical contradiction*; the TRIZ prompt sources and VDI 4521 use *engineering contradiction*.
 
 Example: "IF the engine gets stronger, THEN the car can go faster, BUT it consumes more fuel."
 

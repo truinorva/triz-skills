@@ -130,7 +130,7 @@ For **N-type** causes:
 - Parameter value: "How to reduce / control [N-cause]?"
 
 For **N+P-type** causes (contradictions), formulate both:
-- **Technical contradiction** (pair of contradicting effects): "How to ensure [N+P-cause] to enable [positive effect] but to avoid [negative effect]?"
+- **Technical contradiction** — also called *engineering contradiction*, same concept — (pair of contradicting effects): "How to ensure [N+P-cause] to enable [positive effect] but to avoid [negative effect]?"
 - **Physical contradiction** (opposite states of the cause): "[N+P-cause] should be present/high/strong to [positive effect] AND should be absent/low/weak to avoid [negative effect]."
 
 ### Step 9 — Recommend problems for solving

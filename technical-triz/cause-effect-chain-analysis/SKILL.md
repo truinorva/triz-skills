@@ -1,6 +1,6 @@
 ---
 name: cause-effect-chain-analysis
-description: "TRIZ Cause and Effect Chain Analysis (CECA) and Root Cause Analysis (RCA) — guides users through structured root cause analysis to identify root causes, key disadvantages, and contradictions in technical systems. Use this skill when the user mentions 'CECA', 'cause and effect chain', 'root cause analysis', 'RCA', or wants to investigate why an engineering problem occurs, trace defects to their root causes, or identify contradictions from causal chains."
+description: "TRIZ Cause and Effect Chain Analysis (CECA) and Root Cause Analysis (RCA) — guides users through structured causal analysis to identify root causes, key disadvantages, and the contradictions behind them. Use this skill when the user mentions 'CECA', 'cause and effect chain', 'Ursache-Wirkungs-Analyse', 'Ursache-Wirkungs-Kette', 'root cause analysis', 'RCA', or wants to investigate why an engineering problem occurs, trace defects to their root causes, or derive contradictions from causal chains. For a failure investigation whose goal is an investigation plan, corrective actions and a final report rather than contradictions, use the root-cause-analysis skill instead."
 ---
 
 <!-- 
@@ -12,6 +12,12 @@ description: "TRIZ Cause and Effect Chain Analysis (CECA) and Root Cause Analysi
 # TRIZ Cause and Effect Chain Analysis (CECA) and Root Cause Analysis (RCA)
 
 Guide users through structured Cause and Effect Chain Analysis (CECA) and Root Cause Analysis (RCA) to identify root causes, key disadvantages, and contradictions in technical systems.
+
+## Which procedure, and when to hand over
+
+**CECA** is the default here. It ends in contradictions and key problem statements, which is what the TRIZ tools downstream need — hand those to `contradiction-solver` or `physical-contradictions`.
+
+The **RCA** procedure below is the alternative documented in the same source prompt. If the user's goal is a full failure investigation — physical parameters classified as too high or too low, an investigation plan with data collection methods, containment and corrective actions, and a final report — the `root-cause-analysis` skill covers that in more depth. Offer it.
 
 ## CECA Procedure
 

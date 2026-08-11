@@ -30,7 +30,7 @@ Read these on demand from `references/`. Where a file exists in an EN and a DE v
 
 ## Relation to other skills
 
-Engineering contradictions, Altshuller Matrix / Matrix 2003 lookups, and free application of the 40 Inventive Principles belong to `contradiction-solver`; contradictions extracted from patent texts to `patent-analyzer`. This skill takes over as soon as one parameter of one component must take two opposing values.
+Engineering contradictions — also called *technical contradictions*, the same concept under either name — plus Altshuller Matrix / Matrix 2003 lookups and free application of the 40 Inventive Principles belong to `contradiction-solver`; contradictions extracted from patent texts to `patent-analyzer`. This skill takes over as soon as one parameter of one component must take two opposing values.
 
 ## Interaction flow
 
