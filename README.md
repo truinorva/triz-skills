@@ -25,7 +25,7 @@ This approach allows for:
 ## 🔧 Key Features
 
 - ✅ **Self-contained Skills** – each Skill is one folder with a `SKILL.md` plus optional `references/`
-- 📦 **ZIP = release** – develop unzipped in Git, ship by zipping the folder (see [Releasing](#-releasing-packaging-a-skill))
+- 📦 **ZIP = release** – develop unzipped in Git, ship as ZIPs built on demand and attached to a GitHub Release; no archives are stored in the repo (see [Releasing](#-releasing-packaging-the-skills))
 - 🧭 **Two families** – `technical-triz/` for engineering, `business-triz/` for organizational and people-centric problems
 - 📖 **English-first, term-bilingual** – content is written in English, with key terms also given in another language (e.g. German) so the AI handles terminology correctly
 - ⚖️ **MIT License** – open use, including commercial applications
@@ -48,6 +48,10 @@ Claude distributes and installs Skills as **ZIP archives**. This repository keep
 triz-skills/
 │
 ├── docs/                         # guides & templates (skill-authoring guide, etc.)
+├── scripts/
+│   └── build_skills.py           # packages every Skill folder into a release ZIP
+├── .github/workflows/
+│   └── release.yml               # validates on every push/PR, publishes ZIPs on a tag
 │
 ├── business-triz/                # TRIZ for organizational, service & people-centric problems
 │   └── <skill-name>/
@@ -61,6 +65,8 @@ triz-skills/
 │
 ├── LICENSE
 └── README.md
+
+dist/                             # build output — git-ignored, never committed
 ```
 
 This layout mirrors `triz-prompt-engineering`: the same separation of *business* vs. *technical* TRIZ, with each tool isolated in its own self-contained folder, and a shared `docs/` folder for guides.
@@ -109,34 +115,68 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 
 ## ▶️ Using a Skill with Claude
 
-1. **Pick a Skill folder** from `business-triz/` or `technical-triz/`.
-2. **Zip the folder** so the `SKILL.md` sits at the archive root (see below).
-3. **Install it** into your Claude environment (e.g. Cowork / Claude Code) as a Skill.
-4. Describe your problem; Claude activates the matching Skill based on its `description`.
+1. **Download the Skill's ZIP** from the [latest release](../../releases/latest) — one archive per Skill, ready to install.
+2. **Install it** into your Claude environment (e.g. Claude, Cowork, Claude Code) as a Skill.
+3. Describe your problem; Claude activates the matching Skill based on its `description`.
+
+Prefer everything at once? The release also carries `triz-skills-all.zip` with every Skill folder side by side.
 
 During development you can also point Claude directly at an unzipped Skill folder in this repo.
 
 ---
 
-## 📦 Releasing (packaging a Skill)
+## 📦 Releasing (packaging the Skills)
 
-A release is just a ZIP of the Skill's folder. The `SKILL.md` **must be at the top level of the archive** (not nested inside an extra parent directory).
+**ZIPs are build artefacts, not repository content.** They are never committed — `dist/` and `*.zip` are git-ignored. Every archive is rebuilt from the Skill folders and published as a GitHub Release asset, so each Skill exists exactly once in Git: as its editable folder.
 
-```bash
-# from the repo root — package a single skill
-cd technical-triz/contradiction-solver
-zip -r ../../contradiction-solver.zip . -x '*.DS_Store' 'Thumbs.db'
+### Archive layout
 
-# or package every skill in a family
-cd technical-triz
-for d in */; do (cd "$d" && zip -r "../../${d%/}.zip" . -x '*.DS_Store'); done
+Claude installs a Skill from an archive whose **root entry is the Skill folder itself**:
+
+```plaintext
+contradiction-solver.zip
+└── contradiction-solver/          # folder name == frontmatter `name`
+    ├── SKILL.md
+    └── references/...
 ```
 
-Verify the archive root contains `SKILL.md`:
+### Cutting a release
+
+Tag the commit and push the tag — the [`Package Skills`](.github/workflows/release.yml) workflow builds all archives and attaches them to the release:
 
 ```bash
-unzip -l contradiction-solver.zip | head
+git tag -a v1.0.0 -m "Release v1.0.0" && git push origin v1.0.0
 ```
+
+The release then carries one ZIP per Skill, the combined `triz-skills-all.zip`, and `SHA256SUMS.txt`.
+
+### Building locally
+
+```bash
+python scripts/build_skills.py --bundle
+```
+
+This writes the same archives into `dist/`. Useful flags:
+
+| Flag | Effect |
+|------|--------|
+| `--check` | Validate every Skill and exit without writing files |
+| `--bundle` | Also build the combined `triz-skills-all.zip` |
+| `--out DIR` | Write somewhere other than `dist/` |
+
+The build packages **only Git-tracked files**, so untracked scratch files and OS junk (`.DS_Store`, `Thumbs.db`) can never leak into a release.
+
+Packaged content is always byte-identical to the committed bytes, on every platform: entries are sorted, carry a fixed timestamp, and text files are normalized to LF, so a Windows checkout (which Git hands you with CRLF) produces the same file contents as a Linux one. The compressed archive itself can still differ in size between machines, because that depends on the `zlib` build behind Python — rebuilding in the same environment is byte-identical.
+
+### What the build enforces
+
+The same validation runs locally and in CI (on every push and pull request), so a Skill that cannot be packaged fails before it reaches a release:
+
+- `SKILL.md` exists and starts with YAML frontmatter carrying `name` and `description`
+- `name` is lowercase-hyphenated and **matches the folder name**
+- no two Skills share a `name`
+- every Skill has committed files
+- each finished archive really contains `<name>/SKILL.md` at exactly one top-level folder
 
 ---
 
