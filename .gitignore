@@ -1,3 +1,11 @@
+### Release build output ###
+# Skill ZIPs are build artefacts, never repository content: they are rebuilt
+# from the Skill folders by scripts/build_skills.py and published as GitHub
+# Release assets. Keeping them out of Git avoids duplicated, drifting copies.
+dist/
+*.zip
+
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
