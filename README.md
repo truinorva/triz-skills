@@ -84,7 +84,6 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | [`76-standard-solutions`](technical-triz/76-standard-solutions/) | Substance-Field (Su-Field) modelling and the 76 Standard Solutions across 5 classes. |
 | [`cause-effect-chain-analysis`](technical-triz/cause-effect-chain-analysis/) | Cause & Effect Chain Analysis (CECA) / RCA to trace defects to root causes and contradictions. |
 | [`contradiction-solver`](technical-triz/contradiction-solver/) | Resolves engineering & physical contradictions via the Altshuller Matrix, Matrix 2003 and the 40 Inventive Principles. |
-| [`derivative-resources`](technical-triz/derivative-resources/) | Finds derivative resources arising through combination, transformation or reinterpretation. |
 | [`feature-transfer`](technical-triz/feature-transfer/) | Enhances a system by adopting beneficial features from alternative/competing systems. |
 | [`function-analysis`](technical-triz/function-analysis/) | Maps tools-actions-objects and reveals a technical system's main function. |
 | [`function-analysis-advanced`](technical-triz/function-analysis-advanced/) | Adds spatio-temporal (when/where) considerations to Function Analysis. |
