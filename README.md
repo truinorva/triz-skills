@@ -164,7 +164,9 @@ This writes the same archives into `dist/`. Useful flags:
 | `--bundle` | Also build the combined `triz-skills-all.zip` |
 | `--out DIR` | Write somewhere other than `dist/` |
 
-The build packages **only Git-tracked files**, so untracked scratch files and OS junk (`.DS_Store`, `Thumbs.db`) can never leak into a release. Archives are reproducible — unchanged content yields a byte-identical ZIP.
+The build packages **only Git-tracked files**, so untracked scratch files and OS junk (`.DS_Store`, `Thumbs.db`) can never leak into a release.
+
+Packaged content is always byte-identical to the committed bytes, on every platform: entries are sorted, carry a fixed timestamp, and text files are normalized to LF, so a Windows checkout (which Git hands you with CRLF) produces the same file contents as a Linux one. The compressed archive itself can still differ in size between machines, because that depends on the `zlib` build behind Python — rebuilding in the same environment is byte-identical.
 
 ### What the build enforces
 

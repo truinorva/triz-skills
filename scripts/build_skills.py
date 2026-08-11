@@ -14,8 +14,11 @@ This script builds exactly that, into an output directory that is never committe
 
 Only files tracked by Git are packaged, so untracked scratch files, editor
 backups and OS junk (.DS_Store, Thumbs.db) can never leak into a release.
-Archives are reproducible: entries are sorted and carry a fixed timestamp, so
-identical content always yields a byte-identical ZIP.
+Packaged content is reproducible across platforms: entries are sorted, carry a
+fixed timestamp, and text files are normalized to LF, so a Windows checkout
+produces the same file contents as a Linux one. (The compressed archive itself
+may still differ in size between machines, since that depends on the zlib build
+behind Python.)
 
 Usage:
     python scripts/build_skills.py                  # build into dist/
@@ -151,12 +154,26 @@ def validate(skills: list[Path]) -> dict[str, Path]:
     return by_name
 
 
+def normalize(data: bytes) -> bytes:
+    """Return text content with LF endings; binary content untouched.
+
+    Git stores text with LF and hands Windows checkouts CRLF, so packaging the
+    working tree verbatim would make a Windows build differ from a Linux build
+    of the very same commit. Normalizing puts both back on the committed bytes.
+    A NUL byte in the first block is the usual, cheap binary test — it keeps
+    PNGs, PDFs and XLSX files from being rewritten.
+    """
+    if b"\0" in data[:8000]:
+        return data
+    return data.replace(b"\r\n", b"\n")
+
+
 def add_to_zip(archive: zipfile.ZipFile, source: Path, arcname: str) -> None:
     """Write one file into the archive with a fixed timestamp."""
     info = zipfile.ZipInfo(arcname, date_time=FIXED_TIMESTAMP)
     info.compress_type = zipfile.ZIP_DEFLATED
     info.external_attr = 0o644 << 16
-    archive.writestr(info, source.read_bytes())
+    archive.writestr(info, normalize(source.read_bytes()))
 
 
 def build_skill_zip(name: str, skill_dir: Path, out_dir: Path) -> Path:
