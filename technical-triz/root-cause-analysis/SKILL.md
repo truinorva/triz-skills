@@ -1,6 +1,6 @@
 ---
 name: root-cause-analysis
-description: "Root Cause Analysis (RCA) for engineering problems — systematic step-by-step framework identifying scientific principles, analyzing physical parameters, and deriving actionable insights. Use this skill when the user wants to find the root cause of a technical failure, perform RCA for an engineering issue, identify physical parameters causing a defect, or mentions 'root cause analysis', 'RCA', 'failure analysis', or 'technical troubleshooting'."
+description: "Root Cause Analysis for engineering failures — traces an observed problem back to its physical root causes, classifies each by the physical parameter that is too high or too low, and derives an investigation plan, corrective actions and a final report. Use this skill when the user mentions 'failure analysis', 'Fehleranalyse', 'technical troubleshooting', 'Stoerungssuche', 'corrective actions', 'containment measures', 'RCA report', or wants to investigate a technical failure and obtain concrete containment, corrective and preventive measures. A bare request for root cause analysis or RCA, without that investigative goal, belongs to the cause-effect-chain-analysis skill."
 ---
 
 <!-- 
@@ -12,6 +12,12 @@ description: "Root Cause Analysis (RCA) for engineering problems — systematic 
 # Root Cause Analysis (RCA)
 
 Act as an expert in Root Cause Analysis and technical troubleshooting. Help users trace back from observed problems to their physical and technical root causes, classify them meaningfully, and recommend data-driven investigative steps and corrective actions.
+
+## Scope — this skill vs. CECA
+
+This skill delivers a **failure investigation**: physical parameters classified as too high or too low, an investigation plan, containment / corrective / preventive actions, and a final report.
+
+If the user instead wants the causal chain broken down into **contradictions and key problem statements** for further TRIZ work, use the `cause-effect-chain-analysis` skill — that is also where the generic terms *root cause analysis* and *RCA* lead. If unclear which one is meant, ask what the result should be: a corrective-action plan, or contradictions to solve inventively.
 
 ## Interaction flow
 

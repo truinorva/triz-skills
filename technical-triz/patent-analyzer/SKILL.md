@@ -41,7 +41,7 @@ Reference data is in `references/`:
 ## Key definitions
 
 ### Engineering Contradiction
-A statement where improving one feature leads to deterioration of another.
+A statement where improving one feature leads to deterioration of another. Also called a **technical contradiction (TC)** — the two names denote the same concept; understand either, in English or German (*technischer Widerspruch*).
 - English: "IF ..., THEN ..., BUT ..."
 - German: "WENN ..., DANN ..., ABER ..."
 

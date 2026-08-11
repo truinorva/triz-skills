@@ -94,7 +94,7 @@ Resources that can be leveraged to increase ideality:
 
 ## Contradiction definitions
 
-**Engineering Contradiction:** `IF ..., THEN ..., BUT ...` — improving one feature leads to the deterioration of another. Example: *"IF the engine is more powerful, THEN the car is faster, BUT fuel consumption increases."*
+**Engineering Contradiction** (also called *technical contradiction* — same concept, either term may be used): `IF ..., THEN ..., BUT ...` — improving one feature leads to the deterioration of another. Example: *"IF the engine is more powerful, THEN the car is faster, BUT fuel consumption increases."*
 
 **Physical Contradiction:** a component should have two opposing properties — `... TO ..., AND ... TO ...`. Example: *"A boat should be wide TO avoid capsizing AND narrow TO go fast."*
 
