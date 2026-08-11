@@ -77,6 +77,8 @@ For the **Altshuller Matrix**: read `Solving_Engineering_Contradictions_Altshull
 
 For the **Matrix 2003**: read `Solving_Engineering_Contradictions_Matrix_2003.txt` and follow its 7 steps. Use `Matrix_2003_Parameters.csv` for parameters and `Matrix_2003_AI.csv` for the matrix lookup.
 
+**Match Matrix 2003 parameters by their two-digit number, not by their wording**, and cite them as number plus canonical name, e.g. `03 Length/Angle of Moving Object`. A bare number is always a parameter; an Inventive Principle is always written `IP #n`. Their ranges overlap — parameters run 01–48, principles 1–40 — so never drop the `IP #`.
+
 ## Solving physical contradictions
 
 **Hand over if you can.** If the `physical-contradictions` skill is available, use it instead of the process below. It carries both documented strategy sets — the Litvin variant and the Zlotin/Zusman variant — with binding EN/DE terminology, an explicit applicability check, and the recommended Inventive Principles per strategy. Hand the contradiction over in the full form given under *Key definitions*.
