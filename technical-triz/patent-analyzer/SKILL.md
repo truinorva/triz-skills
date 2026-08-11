@@ -33,7 +33,9 @@ Reference data is in `references/`:
 2. Extract the problem description from the file or given data.
 3. Analyze the text to identify a pair of typical parameters: one improving and one deteriorating.
 4. Use parameter names from `Matrix_2003_Parameters_Synonyms.csv`; if no exact match, apply their synonyms.
-5. For each matched parameter, print its name, number, and explain how it was matched (direct or via synonym).
+5. For each matched parameter, print it as its **two-digit number followed by the canonical name**, e.g. `03 Length/Angle of Moving Object`, and explain how it was matched (direct or via synonym). The number is the identifier that carries over to any other TRIZ prompt or skill; the name is for the reader. Never cite a parameter by name alone.
+
+**Two number spaces, never mix them.** A bare number is always a Matrix 2003 parameter, written with two digits (01–48). An Inventive Principle is always written `IP #n`. The ranges overlap up to 40 — so never drop the `IP #`, and never pad a principle number to two digits.
 6. Print the section/paragraph number where the quote was extracted and include a 10-word quote in the original language from the section where each parameter was detected.
 7. If the improving and deteriorating parameters are the same, formulate a **physical contradiction**. Otherwise, formulate an **engineering contradiction**.
 8. Print all identified contradictions clearly and suggest the next TRIZ analysis step.
