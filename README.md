@@ -140,7 +140,7 @@ contradiction-solver.zip
     └── references/...
 ```
 
-**One archive holds exactly one Skill.** That single top-level folder *is* the format, so an archive bundling several Skills side by side cannot be imported into Claude at all. An all-in-one `triz-skills-all.zip` was shipped with `v1.0.0` for convenience and dropped again for exactly this reason — please do not reintroduce one. Installing the full library means installing the individual ZIPs.
+**One archive holds exactly one Skill.** That single top-level folder *is* the format, so an archive bundling several Skills side by side cannot be imported into Claude at all. An all-in-one `triz-skills-all.zip` was briefly offered with `v1.0.0` and withdrawn for exactly this reason — the build no longer produces one, and no release carries one. Please do not reintroduce it. Installing the full library means installing the individual ZIPs.
 
 ### Cutting a release
 
