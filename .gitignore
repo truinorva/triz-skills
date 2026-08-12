@@ -6,6 +6,12 @@ dist/
 *.zip
 
 
+### Python ###
+# Byte-cache produced by running scripts/build_skills.py
+__pycache__/
+*.py[cod]
+
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
