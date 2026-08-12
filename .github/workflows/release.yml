@@ -32,7 +32,7 @@ jobs:
           python-version: "3.12"
 
       - name: Build every Skill package
-        run: python scripts/build_skills.py --out dist --bundle
+        run: python scripts/build_skills.py --out dist
 
       - name: Upload packages as a workflow artefact
         uses: actions/upload-artifact@v4

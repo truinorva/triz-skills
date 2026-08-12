@@ -20,10 +20,14 @@ produces the same file contents as a Linux one. (The compressed archive itself
 may still differ in size between machines, since that depends on the zlib build
 behind Python.)
 
+One archive per Skill is the only thing worth building. An all-in-one archive
+holding every Skill folder side by side was tried and dropped: Claude installs
+a Skill from an archive rooted in that one Skill's folder, so a combined ZIP
+cannot be imported at all. Please do not add one back.
+
 Usage:
     python scripts/build_skills.py                  # build into dist/
     python scripts/build_skills.py --out /tmp/out   # build elsewhere
-    python scripts/build_skills.py --bundle         # also build the all-in-one ZIP
     python scripts/build_skills.py --check          # validate only, write nothing
 """
 
@@ -191,25 +195,6 @@ def build_skill_zip(name: str, skill_dir: Path, out_dir: Path) -> Path:
     return zip_path
 
 
-def build_bundle_zip(by_name: dict[str, Path], out_dir: Path) -> Path:
-    """Build one archive holding every Skill folder side by side."""
-    zip_path = out_dir / "triz-skills-all.zip"
-
-    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as archive:
-        for name, skill_dir in sorted(by_name.items()):
-            prefix = skill_dir.relative_to(REPO_ROOT).as_posix() + "/"
-            for tracked in git_tracked_files(skill_dir):
-                add_to_zip(
-                    archive,
-                    REPO_ROOT / tracked,
-                    f"{name}/{tracked[len(prefix):]}",
-                )
-        for extra in ("README.md", "LICENSE"):
-            add_to_zip(archive, REPO_ROOT / extra, extra)
-
-    return zip_path
-
-
 def verify_zip(zip_path: Path, name: str) -> None:
     """Assert the archive really is installable: <name>/SKILL.md at its root."""
     with zipfile.ZipFile(zip_path) as archive:
@@ -286,11 +271,6 @@ def main() -> int:
         help="output directory for the archives (default: dist)",
     )
     parser.add_argument(
-        "--bundle",
-        action="store_true",
-        help="additionally build triz-skills-all.zip with every Skill",
-    )
-    parser.add_argument(
         "--check",
         action="store_true",
         help="validate all Skills and exit without writing anything",
@@ -329,11 +309,6 @@ def main() -> int:
             zip_path = build_skill_zip(name, skill_dir, out_dir)
             built.append(zip_path)
             print(f"  {zip_path.name:<44} {zip_path.stat().st_size:>9,} bytes")
-
-        if args.bundle:
-            bundle = build_bundle_zip(by_name, out_dir)
-            built.append(bundle)
-            print(f"  {bundle.name:<44} {bundle.stat().st_size:>9,} bytes")
     except SkillError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
