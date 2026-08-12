@@ -119,7 +119,7 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 2. **Install it** into your Claude environment (e.g. Claude, Cowork, Claude Code) as a Skill.
 3. Describe your problem; Claude activates the matching Skill based on its `description`.
 
-Prefer everything at once? The release also carries `triz-skills-all.zip` with every Skill folder side by side.
+Install one Skill per ZIP — Claude installs a Skill from an archive rooted in that Skill's own folder, so there is deliberately no combined "all Skills" archive to import.
 
 During development you can also point Claude directly at an unzipped Skill folder in this repo.
 
@@ -140,6 +140,8 @@ contradiction-solver.zip
     └── references/...
 ```
 
+**One archive holds exactly one Skill.** That single top-level folder *is* the format, so an archive bundling several Skills side by side cannot be imported into Claude at all. An all-in-one `triz-skills-all.zip` was shipped with `v1.0.0` for convenience and dropped again for exactly this reason — please do not reintroduce one. Installing the full library means installing the individual ZIPs.
+
 ### Cutting a release
 
 Tag the commit and push the tag — the [`Package Skills`](.github/workflows/release.yml) workflow builds all archives and attaches them to the release:
@@ -148,12 +150,12 @@ Tag the commit and push the tag — the [`Package Skills`](.github/workflows/rel
 git tag -a v1.0.0 -m "Release v1.0.0" && git push origin v1.0.0
 ```
 
-The release then carries one ZIP per Skill, the combined `triz-skills-all.zip`, and `SHA256SUMS.txt`.
+The release then carries one ZIP per Skill plus `SHA256SUMS.txt` — and deliberately no combined "all Skills" archive, since Claude cannot import one (see [Archive layout](#archive-layout)).
 
 ### Building locally
 
 ```bash
-python scripts/build_skills.py --bundle
+python scripts/build_skills.py
 ```
 
 This writes the same archives into `dist/`. Useful flags:
@@ -161,7 +163,6 @@ This writes the same archives into `dist/`. Useful flags:
 | Flag | Effect |
 |------|--------|
 | `--check` | Validate every Skill and exit without writing files |
-| `--bundle` | Also build the combined `triz-skills-all.zip` |
 | `--out DIR` | Write somewhere other than `dist/` |
 
 The build packages **only Git-tracked files**, so untracked scratch files and OS junk (`.DS_Store`, `Thumbs.db`) can never leak into a release.
