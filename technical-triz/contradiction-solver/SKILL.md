@@ -83,9 +83,7 @@ For the **Matrix 2003**: read `Solving_Engineering_Contradictions_Matrix_2003.tx
 
 **Hand over if you can.** If the `physical-contradictions` skill is available, use it instead of the process below. It carries both documented strategy sets — the Litvin variant and the Zlotin/Zusman variant — with binding EN/DE terminology, an explicit applicability check, and the recommended Inventive Principles per strategy. Hand the contradiction over in the full form given under *Key definitions*.
 
-Otherwise follow `Solving_Physical_Contradictions.txt` step by step, and apply the corrections below. Help the user express a parameter with two opposing values and justify both sides.
-
-**Correction to that file.** It lists IP #13 (The Other Way Around) under *Satisfying*. The Litvin 1993 table assigns #13 to *Bypassing* only — do not offer it under *Satisfying*. Every other principle assignment in the file matches the Litvin table.
+Otherwise follow `Solving_Physical_Contradictions.txt` step by step. Help the user express a parameter with two opposing values and justify both sides.
 
 **Terminology.** The binding names of the six methods are *Separation in space*, *Separation in time*, *Separation in relation*, *Separation in system level*, *Satisfy*, *Bypass* (DE: *Separation im Raum*, *Separation in der Zeit*, *Separation in der Beziehung*, *Separation durch Systemübergang*, *Befriedigung*, *Umgehung*). The file's variant wordings — "separation at the system level", "separation in place", "satisying" — denote the same six methods; use the binding names in your answer.
 

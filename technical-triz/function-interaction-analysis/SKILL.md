@@ -1,6 +1,6 @@
 ---
 name: function-interaction-analysis
-description: "TRIZ Function and Interaction Analysis — analyzes technical systems by identifying components, mapping their interactions based on energy/matter/information flow, and presenting functions in tabular form. Use this skill when the user wants to analyze how system components interact, map energy or information flows between parts, or mentions 'interaction analysis', 'component interaction', or wants to understand how a technical system works at the component level."
+description: "TRIZ Function and Interaction Analysis — analyzes technical systems by identifying components, mapping their interactions based on energy/matter/information flow, and presenting functions in tabular form. Use this skill when the user wants to analyze how system components interact, map energy or information flows between parts, or mentions 'interaction analysis', 'component interaction', or wants to understand how a technical system works at the component level. For a full function model with usefulness category, degree of fulfillment, and the system's main function, use the function-analysis skill instead."
 ---
 
 <!-- 

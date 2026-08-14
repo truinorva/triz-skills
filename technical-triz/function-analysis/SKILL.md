@@ -1,6 +1,6 @@
 ---
 name: function-analysis
-description: "TRIZ Function Analysis for technical systems — identifies tools, actions, objects, and functions, clarifies component relationships, and reveals the system's main function. Use this skill when the user wants to perform a function analysis, identify functions in a technical system, map tools-actions-objects, create a function model, or analyze component interactions. Also trigger on mentions of 'function analysis', 'function model', 'tool-action-object', or 'function carrier'."
+description: "TRIZ Function Analysis for technical systems — identifies tools, actions, objects, and functions, clarifies component relationships, and reveals the system's main function. Use this skill when the user wants to perform a function analysis, identify functions in a technical system, map tools-actions-objects, or create a function model. Also trigger on mentions of 'function analysis', 'function model', 'tool-action-object', or 'function carrier'. For a dedicated map of how components interact along energy, matter, and information flow, use the function-interaction-analysis skill instead."
 ---
 
 <!-- 
