@@ -24,7 +24,7 @@ This approach allows for:
 
 ## 🔧 Key Features
 
-- ✅ **Self-contained Skills** – each Skill is one folder with a `SKILL.md` plus optional `references/`
+- ✅ **Self-contained Skills** – each Skill is one folder with a `SKILL.md` plus optional `references/` and `assets/`
 - 📦 **ZIP = release** – develop unzipped in Git, ship as ZIPs built on demand and attached to a GitHub Release; no archives are stored in the repo (see [Releasing](#-releasing-packaging-the-skills))
 - 🧭 **Two families** – `technical-triz/` for engineering, `business-triz/` for organizational and people-centric problems
 - 📖 **English-first, term-bilingual** – content is written in English, with key terms also given in another language (e.g. German) so the AI handles terminology correctly
@@ -56,12 +56,14 @@ triz-skills/
 ├── business-triz/                # TRIZ for organizational, service & people-centric problems
 │   └── <skill-name>/
 │       ├── SKILL.md
-│       └── references/           # (optional) supporting data, tables, images
+│       ├── references/           # (optional) knowledge Claude reads on demand
+│       └── assets/               # (optional) files the Skill ships and hands on
 │
 ├── technical-triz/               # classical engineering-oriented TRIZ
 │   └── <skill-name>/
 │       ├── SKILL.md
-│       └── references/           # (optional) supporting data, tables, images
+│       ├── references/           # (optional) knowledge Claude reads on demand
+│       └── assets/               # (optional) files the Skill ships and hands on
 │
 ├── LICENSE
 └── README.md
@@ -137,7 +139,8 @@ Claude installs a Skill from an archive whose **root entry is the Skill folder i
 contradiction-solver.zip
 └── contradiction-solver/          # folder name == frontmatter `name`
     ├── SKILL.md
-    └── references/...
+    ├── references/...
+    └── assets/...                 # if the Skill ships any
 ```
 
 **One archive holds exactly one Skill.** That single top-level folder *is* the format, so an archive bundling several Skills side by side cannot be imported into Claude at all. An all-in-one `triz-skills-all.zip` was briefly offered with `v1.0.0` and withdrawn for exactly this reason — the build no longer produces one, and no release carries one. Please do not reintroduce it. Installing the full library means installing the individual ZIPs.
@@ -204,7 +207,8 @@ Things to observe:
 - **`name`** — lowercase, hyphenated, unique, and matching the folder name. This is the Skill's identifier.
 - **`description` is the trigger.** It is the *only* thing Claude sees when deciding whether to activate a Skill. Write it in the third person, state what the Skill does, **and list the words/phrases that should activate it** ("Use this skill when the user mentions …"). Be specific to avoid both false triggers and missed triggers. Aim for roughly 1–3 sentences.
 - **Keep `SKILL.md` lean; push detail into `references/`.** Claude loads `SKILL.md` up front but reads reference files only when needed. Put long tables, matrices, examples, and images (e.g. the 40 Principles, the Contradiction Matrix, the 76 Standard Solutions) in `references/` and tell `SKILL.md` to read them on demand. This keeps activation cheap and the instructions focused.
-- **Reference paths are relative** to the Skill folder (e.g. `references/40_Inventive_Principles_EN.md`). Never use absolute or machine-specific paths.
+- **`references/` for knowledge, `assets/` for files that are handed on.** `references/` holds what Claude reads to do the work — tables, matrices, method descriptions, examples. `assets/` holds what the Skill ships and passes to the user: templates to fill in, source PDFs, binaries. See [`innovation-checklist`](technical-triz/innovation-checklist/), whose ISQ questionnaires and Excel templates live in `assets/`. Both are optional, and a Skill may have either, both, or neither.
+- **Reference paths are relative** to the Skill folder (e.g. `references/40_Inventive_Principles_EN.md`, `assets/TRU_ISQ_EN.xlsx`). Never use absolute or machine-specific paths.
 - **Bundle data with the Skill.** Anything the Skill needs (CSVs, Markdown tables, PNG diagrams, helper scripts) lives inside the folder so the ZIP is self-contained.
 - **Write in English first.** English is the primary language for all `SKILL.md` instructions and documentation.
 - **Add key terms in another language to anchor terminology.** Where a precise term or phrasing matters, include the equivalent in another language (e.g. German) inline so the AI maps and handles it correctly. See [`contradiction-solver`](technical-triz/contradiction-solver/) for examples — the contradiction formulation gives both `IF … THEN … BUT …` and `WENN … DANN … ABER …`, and names both *Altshuller Matrix* and *Altschuller Matrix*. Parallel reference files (e.g. `*_EN.md` / `*_DE.md`) are welcome for larger bilingual data sets.
