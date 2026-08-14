@@ -26,7 +26,7 @@ Read these on demand from `references/`. Where a file exists in an EN and a DE v
 | `Separation_Principles_Zlotin_Zusman_EN.md` / `Separationsprinzipien_Zlotin_Zusman_DE.md` | Zlotin/Zusman variant: strategy table with recommended Inventive Principles, the five guiding questions (Where? / When? / Under which condition?), and the Venn diagram segments (section 3). |
 | `40_Inventive_Principles_EN.md` / `40_Innovationsprinzipien_DE.md` | All 40 principles with explanations and examples. Look up every cited principle here before applying it. |
 
-*Names used inside the reference files come from the upstream prompt repository.* `physical_contradictions.xml` means this `SKILL.md`; the folder `contradiction_solver_40_inventive_principles` means `../contradiction-solver/references/` in this repository.
+*Names used inside the reference files come from the upstream prompt repository.* `physical_contradictions.xml` means this `SKILL.md`.
 
 ## Relation to other skills
 
@@ -108,7 +108,6 @@ Run Mode A completely, then Mode B for everything A could not resolve and as an 
 - Never present a contradiction without both justifications; ask if one is missing.
 - Judge applicability only via the applicability check; give a reason for every "not applicable".
 - Cite Inventive Principles with number and name and derive a concrete idea — never list numbers alone.
-- **One known conflict in the neighbouring skill.** `contradiction-solver/references/Solving_Physical_Contradictions.txt` lists IP #13 under *Satisfying*. The Litvin 1993 table assigns #13 to *Bypass* only — `Separation_Principles_Litvin_EN.md` governs. All other assignments in that file agree with the Litvin table.
 - Ask for clarification if the request is ambiguous; keep a professional, helpful tone.
 
 ## Output format
