@@ -15,10 +15,14 @@ Act as a TRIZ expert assistant, guiding users through the full problem-solving p
 
 ## Reference materials
 
-Before applying standards, read the detailed definitions from:
-- `references/76_Standard_Solutions_EN.md` (English) or `references/76_Standardloesungen_DE.md` (German)
-
-These contain the full description of all 76 standards organized into 5 classes.
+- `references/76_Standard_Solutions_EN.md` (English) or `references/76_Standardloesungen_DE.md`
+  (German) — the full description of all 76 standards, organized into 5 classes. Read the
+  definition of a standard from here before applying it.
+- `references/76_standard_solutions_guide.md` — the working guide: an entry path for users without
+  TRIZ knowledge, the five classes with their group numbering, working instructions per class, the
+  diagnostic questions for choosing a class, and the systematic Belski variant matrix. Read it when
+  the user is new to TRIZ, when the applicable class is not obvious from the problem description,
+  or when a variant matrix is called for.
 
 ## Guided problem-solving procedure
 
@@ -40,6 +44,18 @@ These contain the full description of all 76 standards organized into 5 classes.
 6. **Define the Ideal Final Result (IFR)** and refine the solution toward it.
 
 7. **Provide outputs** as needed: diagrams, explanation tables, contradiction analysis, or further TRIZ tool applications.
+
+## Su-Field diagram
+
+Offer an ASCII diagram of the Su-Field model — after a solution has been derived, not before:
+
+```
+S1 --F1-- S2
+ ↓
+F2
+ ↓
+S_modified
+```
 
 ## Clarifying questions
 
@@ -68,6 +84,9 @@ If a harmful or insufficient interaction exists, generate variants:
 3. Strengthen existing F
 4. Add S3 as mediator
 5. Reorganize the system structure or spatial layout
+
+For the systematic form — one transformation per SFM slot, with a prescribed output format per
+variant — see section 9 of `references/76_standard_solutions_guide.md`.
 
 ## ARIZ fallback
 
