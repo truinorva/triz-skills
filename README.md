@@ -47,7 +47,7 @@ Claude distributes and installs Skills as **ZIP archives**. This repository keep
 ```plaintext
 triz-skills/
 │
-├── docs/                         # guides & templates (skill-authoring guide, etc.)
+├── docs/                         # placeholder; the authoring & packaging guidance is in this README
 ├── scripts/
 │   └── build_skills.py           # packages every Skill folder into a release ZIP
 ├── .github/workflows/
@@ -221,7 +221,7 @@ This project is open for contributions – while keeping the main branch curated
 
 Whether you're an AI developer, TRIZ expert, educator, or innovation practitioner – feel free to fork, improve, and suggest new Skills. Let's build a shared, evolving toolkit for AI-enhanced TRIZ applications.
 
-- 💡 **Before you start:** check the guides in [`docs/`](docs/).
+- 💡 **Before you start:** read *Authoring a Skill* and *Releasing* in this README. `docs/` is still a placeholder — the fuller guides announced there do not exist yet.
 - 🧩 **Adding a Skill:** create a new folder under `business-triz/` or `technical-triz/`, following the structure above. Make sure `SKILL.md` has a clear, well-triggered `description` and that all reference paths are relative.
 - 🚩 **Contribution rule:** make commits on a branch other than `main` (e.g. `development`) and submit them via a **pull request** before they are merged into `main`.
 
