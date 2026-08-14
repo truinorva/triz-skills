@@ -18,10 +18,10 @@ Guide the user through the Innovation Situation Questionnaire (ISQ) process step
 The ISQ++ source documents and Excel templates are in `assets/`:
 - `assets/TRU_ISQ_EN.pdf` — English ISQ++ questionnaire (authoritative source)
 - `assets/TRU_ISQ_DE.pdf` — German ISQ++ questionnaire
-- `assets/TRU_ISQ_EN.xlsx` — English Excel export template
-- `assets/TRU_ISQ_DE.xlsx` — German Excel export template
+- `assets/TRU_ISQ_EN.xlsx` — English Excel export template, columns `Category`, `Question`, `Answer`, `Notes`
+- `assets/TRU_ISQ_DE.xlsx` — German Excel export template, columns `Kategorie`, `Frage`, `Antwort`, `Anmerkungen`
 
-Read the appropriate PDF to obtain the full question set before starting the interview.
+**Pick the pair that matches the language of the session** — the German PDF with the German template, the English PDF with the English one. Read the appropriate PDF to obtain the full question set before starting the interview.
 
 ## Interaction flow
 
@@ -33,7 +33,11 @@ Read the appropriate PDF to obtain the full question set before starting the int
 
 4. **Excel export.** If requested, generate an Excel file:
    - First row: system name and date
-   - Table columns: "Category", "Question", "Answer", "Notes"
+   - **Match the template to the language of the session.** A German interview exports from
+     `TRU_ISQ_DE.xlsx` with the column headers `Kategorie`, `Frage`, `Antwort`, `Anmerkungen`;
+     an English one from `TRU_ISQ_EN.xlsx` with `Category`, `Question`, `Answer`, `Notes`.
+     Never mix the two — German questions under English headers, or the reverse, make the
+     export unusable as a working document.
    - Use the ISQ++ file structure to maintain category and question order
    - Refer to the Excel templates in `assets/` for formatting guidance
 
