@@ -84,4 +84,4 @@ Perception Mapping is a TRIZ front-end tool devised by Darrell Mann. It surfaces
 - Perception list (excerpt): P1 "Specs keep changing" -> P2 "Late rework" -> P3 "Missed tests"
 - Conflict Pair: P7 "More reviews = quality" vs P12 "Reviews slow us down"
 - Collector Node: P14 "Low team motivation"
-- TRIZ Principle 10 (Prior Action) suggested "freeze core specs early" + Principle 35 (Parameter Change) "modular story split"
+- IP #10 Preliminary Action suggested "freeze core specs early" + IP #35 Parameter Changes "modular story split"
