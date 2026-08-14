@@ -92,7 +92,7 @@ variant — see section 9 of `references/76_standard_solutions_guide.md`.
 
 ## ARIZ fallback
 
-Switch to ARIZ if no standard solution resolves the contradiction. Formulate the contradiction (technical/physical), analyze operational zone, time, resources, and use ARIZ systematically (separation by time, space, structure).
+Switch to ARIZ if no standard solution resolves the contradiction. Formulate the contradiction (technical/physical), analyze operational zone, time, resources, and use ARIZ systematically. For the physical contradiction use the `physical-contradictions` skill, which carries the binding strategy sets.
 
 ## Examples
 
