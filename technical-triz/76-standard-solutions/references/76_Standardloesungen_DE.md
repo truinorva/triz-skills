@@ -36,15 +36,15 @@ S2: Der Stoff, der als „Werkzeug " („Instrument " oder „Medium ") eine not
 F: Das Feld, das die Energie, bzw. die Kraft erzeugt (also die Wirkung von S auf Si oder deren Wechselwirkung).
 
 ### Unterschiedliche Arten der Wechselwirkung
-Erwünschte, nützliche Wirkung
 
-Unzureichende Wirkung
+| Art der Wechselwirkung | Dargestellt durch |
+|---|---|
+| Erwünschte, nützliche Wirkung | durchgezogener Pfeil |
+| Unzureichende Wirkung | gepunkteter Pfeil |
+| Überzogene Wirkung | Doppelpfeil — zwei parallele Linien, eine Pfeilspitze |
+| Schädliche Wirkung | Wellenlinie mit Pfeilspitze, rot gezeichnet |
+| Unspezifische, allgemeine Wirkung oder Wechselwirkung (z.B. Feld auf Stoff) | Linie ohne Pfeilspitze |
 
-Überzogene Wirkung
-
-Schädliche Wirkung
-
-Unspezifische, allgemeine Wirkung oder Wechselwirkung (z.B. Feld auf Stoff)
 ![](1.png)
 
 ## Unterteilung der 5 Klassen
@@ -103,6 +103,33 @@ Diese Gruppe hat 5 Untergruppen und enthält 17 Standardlösungen.
 4. Notiere die Standardlösung, die zur Lösung herangezogen werden kann.
 5. Notiere das Neue SFM des Problems unter Verwendung der Standardlösungen aus Punkt 4.
 6. Beschreibe die Lösung, die durch das Implementieren der Standardlösung erzeugt wurde.
+
+Das Schema hat sechs Spalten. Ausgefüllt für das Beispiel der Abbildung:
+
+1. **Problem** — Beschreibung
+2. **Interagierende Komponenten** — Stoff 1, Stoff 2, Feld 1
+3. **S/F-Modell** — das Feld wirkt auf beide Stoffe, die Wirkung zwischen ihnen ist schädlich:
+
+   ```
+        F1
+       /  \
+   S1 ~~~~ S2
+   ```
+
+4. **Mögliche Standardlösungen** — Einführung eines neuen Stoffes
+5. **Gewählte Standardlösung (Neues SFM)** — der neue Stoff S3 verändert die Wechselwirkung:
+
+   ```
+        F1
+       /  \
+   S1 -|- S2
+        S3
+   ```
+
+6. **Lösung** — Beschreibung
+
+Verwendete Notation: `~~` steht für eine schädliche Wirkung, `-|-` für die veränderte
+Wechselwirkung des neuen SFM.
 
 ![](2.png)
 
