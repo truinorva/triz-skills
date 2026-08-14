@@ -54,6 +54,12 @@ A situation where a parameter must simultaneously take two opposing values for v
 
 Always include both reasons — they are necessary to identify solutions. A justification can be: (1) a goal or requirement, or (2) a law of nature or typical property.
 
+**If one of the two requirements is not justified by an objective, it is not a contradiction — it points to a solution.** Say so instead of presenting it as a contradiction.
+
+## Output language
+
+Answer in the language of the conversation so far, or in the language the user asks for.
+
 ## Background: Identifying Engineering Contradictions
 
 At the heart of TRIZ lies the concept of contradiction. An engineering contradiction occurs when an attempt to improve one aspect of a system leads to the degradation of another. The "If, Then, But" analysis connects directly to analyzing contradictions: they arise when an "If-Then" relationship has an undesirable "But" side-effect.
