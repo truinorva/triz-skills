@@ -39,11 +39,13 @@ Act as a TRIZ expert assistant, guiding users through the full problem-solving p
    - If the SFM is complete and only **weak/insufficient effects** are present -> apply Class 2 or Standards 1.1.2–1.1.8, plus Class 5 if needed
    - If the contradiction exists on a **system level** -> apply Class 3, or optionally Class 2 and Class 5
 
-5. **Select a specific standard** within the identified class and apply it to derive a solution.
+5. **Identify unused resources.** Ask: "What internal resources (materials, energy, functions, time, space, system elements) are available but unused?" Feed the answers into the standards that build on what is already there: Standard 1.2.2 (eliminate a harmful effect through system resources), Group 5.1 (add substances), Group 5.2 (add fields — 5.2.1 multiple use of available fields, 5.2.2 fields from the system environment). For a systematic sweep across all six TRIZ resource types, use the `resource-analysis` skill.
 
-6. **Define the Ideal Final Result (IFR)** and refine the solution toward it.
+6. **Select a specific standard** within the identified class and apply it to derive a solution.
 
-7. **Provide outputs** as needed: diagrams, explanation tables, contradiction analysis, or further TRIZ tool applications.
+7. **Define the Ideal Final Result (IFR)** and refine the solution toward it.
+
+8. **Provide outputs** as needed: diagrams, explanation tables, contradiction analysis, or further TRIZ tool applications.
 
 ## Su-Field diagram
 
