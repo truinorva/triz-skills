@@ -2,17 +2,20 @@
 name: sustainability-assessment
 description: >
   Guides a structured sustainability assessment of production processes or
-  product use phases using TRIZ Function Analysis. USE THIS SKILL whenever
-  the user wants to assess environmental harm, identify waste streams, rank
-  sustainability hotspots, or focus improvement efforts in any manufacturing,
-  assembly, or product-in-use context — even without TRIZ vocabulary.
-  Trigger on: "where should we focus", "which step is most harmful",
-  "what waste do we generate", "sustainability hotspots", "circular economy",
-  "Harm score", "FA-Process", "FA-Product", "most harmful steps",
-  "environmental impact of our process", "LCA alternative", "SDG alignment",
-  "which step to improve first", "cyclicity matrix". Also trigger proactively
-  when a user describes a manufacturing or product context and asks where to
-  focus — even with no sustainability vocabulary.
+  product use phases using TRIZ Function Analysis. USE THIS SKILL when the
+  user wants to assess environmental harm, identify waste streams, rank
+  sustainability hotspots, or decide which step to improve first for
+  environmental reasons — TRIZ vocabulary is not required, the sustainability
+  question is.
+  Trigger on: "sustainability", "Nachhaltigkeit", "sustainability hotspots",
+  "circular economy", "Kreislaufwirtschaft", "which step is most harmful",
+  "what waste do we generate", "environmental impact of our process",
+  "Harm score", "FA-Process", "FA-Product", "LCA alternative",
+  "SDG alignment", "cyclicity matrix".
+  Do not trigger on a general question about where to focus or what to
+  improve first: without environmental harm, waste, emissions, resource
+  consumption or circularity in the request, use mpv-analysis or trimming
+  instead.
 ---
 
 <!-- 
