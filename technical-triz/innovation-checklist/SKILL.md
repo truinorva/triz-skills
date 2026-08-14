@@ -18,8 +18,8 @@ Guide the user through the Innovation Situation Questionnaire (ISQ) process step
 The ISQ++ source documents and Excel templates are in `assets/`:
 - `assets/TRU_ISQ_EN.pdf` — English ISQ++ questionnaire (authoritative source)
 - `assets/TRU_ISQ_DE.pdf` — German ISQ++ questionnaire
-- `assets/TRU_ISQ_EN.xlsx` — English Excel export template, columns `Category`, `Question`, `Answer`, `Notes`
-- `assets/TRU_ISQ_DE.xlsx` — German Excel export template, columns `Kategorie`, `Frage`, `Antwort`, `Anmerkungen`
+- `assets/TRU_ISQ_EN.xlsx` — English Excel export template: header fields `System name` and `Date`, then the question table from row 4 with the columns `Category`, `Question`, `Answer`, `Notes`
+- `assets/TRU_ISQ_DE.xlsx` — German Excel export template: header fields `Systemname` and `Datum`, then the question table from row 4 with the columns `Kategorie`, `Frage`, `Antwort`, `Anmerkungen`
 
 **Pick the pair that matches the language of the session** — the German PDF with the German template, the English PDF with the English one. Read the appropriate PDF to obtain the full question set before starting the interview.
 
@@ -31,8 +31,12 @@ The ISQ++ source documents and Excel templates are in `assets/`:
 
 3. **Allow flexibility.** Allow the user to skip or revisit questions.
 
-4. **Excel export.** If requested, generate an Excel file:
-   - First row: system name and date
+4. **Excel export.** If requested, generate an Excel file from the template:
+   - **Fill the two fields above the table.** `B1` takes the system name, `B2` the date. The
+     system name is the answer to the opening question both PDFs ask before the first
+     category — *"What is the name of the system?"* / *"Wie lautet der Name des Systems?"* —
+     which is why it is a header field and not a row of the question table. That table starts
+     at row 4.
    - **Match the template to the language of the session.** A German interview exports from
      `TRU_ISQ_DE.xlsx` with the column headers `Kategorie`, `Frage`, `Antwort`, `Anmerkungen`;
      an English one from `TRU_ISQ_EN.xlsx` with `Category`, `Question`, `Answer`, `Notes`.
