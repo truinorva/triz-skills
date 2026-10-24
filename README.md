@@ -136,7 +136,9 @@ claude plugin install technical-triz@truinorva-triz
 claude plugin install business-triz@truinorva-triz
 ```
 
-Inside a session, `/plugin marketplace add truinorva/triz-skills` and `/plugin install technical-triz@truinorva-triz` do the same. The Skills then appear under the plugin's name, e.g. `technical-triz:contradiction-solver`.
+Inside a session, `/plugin marketplace add truinorva/triz-skills` and `/plugin install technical-triz@truinorva-triz` do the same. The Skills then appear under the plugin's name, e.g. `technical-triz:contradiction-solver`, from the next session on.
+
+To check the installation, `claude plugin list` shows both plugins as enabled, and `claude plugin details technical-triz@truinorva-triz` lists the Skills the plugin loaded. If you installed Skills from an earlier release ZIP, see [Switching from the ZIP releases](#switching-from-the-zip-releases).
 
 ### Claude organizations (Claude.ai, Claude Desktop, Cowork)
 
@@ -144,7 +146,7 @@ An organization Owner syncs the marketplace under **Organization settings → Pl
 
 ### Claude.ai without an organization
 
-Download the Skill ZIPs from the [latest release](../../releases/latest) and upload each one as a Skill — one archive per Skill (see [Archive layout](#archive-layout-single-skill-uploads)).
+Download the Skill ZIPs from the [latest release](../../releases/latest) and upload each one under **Customize → Skills** — one archive per Skill (see [Archive layout](#archive-layout-single-skill-uploads)). Skills enabled there also load in Claude Code when you sign in with the same account, so if you use the plugins in Claude Code as well, see [Switching from the ZIP releases](#switching-from-the-zip-releases).
 
 ### ChatGPT workspaces (Business, Enterprise, Edu)
 
@@ -157,6 +159,33 @@ codex plugin marketplace add truinorva/triz-skills
 ```
 
 Then install `technical-triz` and/or `business-triz` from `/plugins` in Codex or from the **Plugins** tab of the desktop app, and start a new chat.
+
+### Switching from the ZIP releases
+
+Releases up to v1.0.1 shipped the Skills only as ZIPs. Copies installed from them stay active next to the plugins, so Claude then knows each Skill twice, under its plain name and as `technical-triz:…` or `business-triz:…`: which copy answers is left to chance, and every session pays for both descriptions. Once the plugins are installed, take the old copies out.
+
+**Claude Code** — move the Skill folders out of `~/.claude/skills/`. These commands move only the 26 TRIZ Skills of the ZIP releases, into a backup folder you can delete once the plugins work.
+
+macOS / Linux:
+
+```bash
+skills="76-standard-solutions business-function-analysis cause-effect-chain-analysis contradiction-solver feature-transfer function-analysis function-analysis-advanced function-interaction-analysis function-oriented-search ideality innovation-checklist interactive-trimming mpv-analysis patent-analyzer perception-mapping physical-contradictions problem-operator resource-analysis root-cause-analysis root-conflict-analysis smart-little-people solutions-at-system-levels sustainability-assessment system-description system-operator trimming"
+mkdir -p ~/.claude/skills-before-plugins
+for s in $skills; do [ -d ~/.claude/skills/$s ] && mv ~/.claude/skills/$s ~/.claude/skills-before-plugins/; done
+```
+
+Windows (PowerShell):
+
+```powershell
+$skills = '76-standard-solutions','business-function-analysis','cause-effect-chain-analysis','contradiction-solver','feature-transfer','function-analysis','function-analysis-advanced','function-interaction-analysis','function-oriented-search','ideality','innovation-checklist','interactive-trimming','mpv-analysis','patent-analyzer','perception-mapping','physical-contradictions','problem-operator','resource-analysis','root-cause-analysis','root-conflict-analysis','smart-little-people','solutions-at-system-levels','sustainability-assessment','system-description','system-operator','trimming'
+$backup = "$HOME\.claude\skills-before-plugins"
+New-Item -ItemType Directory -Force $backup | Out-Null
+foreach ($s in $skills) { if (Test-Path "$HOME\.claude\skills\$s") { Move-Item "$HOME\.claude\skills\$s" $backup } }
+```
+
+A project can hold copies too, in its own `.claude/skills/`; move those the same way.
+
+**Claude.ai** — Skills uploaded under **Customize → Skills** load in Claude Code as well. Turn each TRIZ Skill off with the switch next to it; a switched-off Skill stays uploaded and can be switched on again. To keep them in Claude.ai but out of Claude Code, set `"syncClaudeAiSkills": false` in Claude Code's settings instead — that stops every Skill from Claude.ai loading in Claude Code, not only the TRIZ ones.
 
 ### During development
 
