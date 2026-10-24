@@ -1,0 +1,12 @@
+{
+  "name": "business-triz",
+  "version": "1.1.0",
+  "description": "TRIZ for organizational, service and people-centric problems: Function Analysis in plain language for non-engineers, Perception Mapping of stakeholder beliefs, and solution ideas across super-system and sub-system levels.",
+  "author": {
+    "name": "Truinorva"
+  },
+  "homepage": "https://github.com/truinorva/triz-skills",
+  "repository": "https://github.com/truinorva/triz-skills",
+  "license": "MIT",
+  "keywords": ["triz", "innovation", "business", "organization", "stakeholders", "perception-mapping"]
+}

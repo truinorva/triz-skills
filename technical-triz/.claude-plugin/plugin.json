@@ -1,0 +1,12 @@
+{
+  "name": "technical-triz",
+  "version": "1.1.0",
+  "description": "Classical engineering TRIZ: engineering and physical contradictions with the 40 Inventive Principles, Function Analysis, Trimming, the 76 Standard Solutions, Ideality, Resource Analysis, the System Operator, root-cause and patent analysis.",
+  "author": {
+    "name": "Truinorva"
+  },
+  "homepage": "https://github.com/truinorva/triz-skills",
+  "repository": "https://github.com/truinorva/triz-skills",
+  "license": "MIT",
+  "keywords": ["triz", "innovation", "inventive-principles", "contradiction", "function-analysis", "engineering"]
+}
