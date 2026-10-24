@@ -146,7 +146,7 @@ An organization Owner syncs the marketplace under **Organization settings → Pl
 
 ### Claude.ai without an organization
 
-Download the Skill ZIPs from the [latest release](../../releases/latest) and upload each one under **Customize → Skills** — one archive per Skill (see [Archive layout](#archive-layout-single-skill-uploads)). Skills enabled there also load in Claude Code when you sign in with the same account, so if you use the plugins in Claude Code as well, see [Switching from the ZIP releases](#switching-from-the-zip-releases).
+Download the Skill ZIPs from the [latest release](../../releases/latest) and upload each one under **Customize → Skills** — one archive per Skill (see [Archive layout](#archive-layout-single-skill-uploads)). This is the way into Claude.ai chats, on the web and in the Chat of the desktop app: the plugins exist only in Claude Code and never reach them. Skills uploaded here also load in Claude Code when you sign in with the same account; see [Switching from the ZIP releases](#switching-from-the-zip-releases) for what that means next to the plugins.
 
 ### ChatGPT workspaces (Business, Enterprise, Edu)
 
@@ -162,7 +162,7 @@ Then install `technical-triz` and/or `business-triz` from `/plugins` in Codex or
 
 ### Switching from the ZIP releases
 
-Releases up to v1.0.1 shipped the Skills only as ZIPs. Copies installed from them stay active next to the plugins, so Claude then knows each Skill twice, under its plain name and as `technical-triz:…` or `business-triz:…`: which copy answers is left to chance, and every session pays for both descriptions. Once the plugins are installed, take the old copies out.
+Releases up to v1.0.1 shipped the Skills only as ZIPs. In Claude Code, copies installed from them stay active next to the plugins, so Claude Code then knows each Skill twice, under its plain name and as `technical-triz:…` or `business-triz:…`: which copy answers is left to chance, and every session pays for both descriptions. Once the plugins are installed, take the old copies out of Claude Code — but only there.
 
 **Claude Code** — move the Skill folders out of `~/.claude/skills/`. These commands move only the 26 TRIZ Skills of the ZIP releases, into a backup folder you can delete once the plugins work.
 
@@ -185,7 +185,7 @@ foreach ($s in $skills) { if (Test-Path "$HOME\.claude\skills\$s") { Move-Item "
 
 A project can hold copies too, in its own `.claude/skills/`; move those the same way.
 
-**Claude.ai** — Skills uploaded under **Customize → Skills** load in Claude Code as well. Turn each TRIZ Skill off with the switch next to it; a switched-off Skill stays uploaded and can be switched on again. To keep them in Claude.ai but out of Claude Code, set `"syncClaudeAiSkills": false` in Claude Code's settings instead — that stops every Skill from Claude.ai loading in Claude Code, not only the TRIZ ones.
+**Claude.ai** — leave the Skills you uploaded under **Customize → Skills** switched on. The plugins exist only in Claude Code, the command line and the Code tab of the desktop app; Claude.ai chats never see them, so the uploads are what keeps the Skills available there, and switching them off takes the Skills out of your chats. Uploaded Skills also load in Claude Code when you sign in with the same account, which leaves each Skill twice in Claude Code. As long as the uploads and the plugins carry the same release, that costs tokens but changes no answer; upload the ZIPs of each new release to keep them in step. To keep the uploads out of Claude Code anyway, set `"syncClaudeAiSkills": false` in Claude Code's settings — that stops every Skill from Claude.ai loading in Claude Code, not only the TRIZ ones.
 
 ### During development
 
