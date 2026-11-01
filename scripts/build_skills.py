@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
-"""Package every Skill folder as a Claude-installable ZIP archive.
+"""Validate the plugin marketplace and package every Skill as a ZIP archive.
 
-The repository keeps Skills unzipped, one folder per Skill, because that is what
-makes them editable and reviewable in Git. Claude, however, installs a Skill from
-a ZIP whose root entry is the Skill folder itself:
+The repository is a plugin marketplace: `.claude-plugin/marketplace.json` lists
+the plugins, each plugin folder carries `.claude-plugin/plugin.json`, and its
+Skills sit unzipped under `skills/<name>/`. Claude Code and ChatGPT both install
+the plugins straight from the repository in that layout, so this script checks
+that the marketplace, the plugin manifests and the Skills agree with each other.
+
+A single Skill can also be uploaded on its own (Claude.ai, a ChatGPT Skill
+upload). That takes a ZIP whose root entry is the Skill folder itself:
 
     contradiction-solver.zip
     └── contradiction-solver/
@@ -29,12 +34,14 @@ Usage:
     python scripts/build_skills.py                  # build into dist/
     python scripts/build_skills.py --out /tmp/out   # build elsewhere
     python scripts/build_skills.py --check          # validate only, write nothing
+    python scripts/build_skills.py --expect-version 1.1.0   # plugins must carry it
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import re
 import shutil
 import subprocess
@@ -42,18 +49,24 @@ import sys
 import zipfile
 from pathlib import Path
 
-# Directories that hold Skill folders. Everything else in the repo is ignored.
-SKILL_FAMILIES = ("business-triz", "technical-triz")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+# The marketplace file lists the plugins. Its location is fixed: Claude Code and
+# ChatGPT both look for it here when a repository is added as a marketplace.
+MARKETPLACE = REPO_ROOT / ".claude-plugin" / "marketplace.json"
+
+# Limits of the Agent Skills format, which Claude and ChatGPT both read. Staying
+# inside them keeps every Skill installable on both platforms.
+MAX_NAME_LENGTH = 64
+MAX_DESCRIPTION_LENGTH = 1024
 
 # Fixed timestamp for every archive entry (the ZIP format's own epoch), so that
 # rebuilding unchanged content produces an unchanged file.
 FIXED_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-
 
 class SkillError(Exception):
-    """A Skill folder that cannot be packaged as-is."""
+    """A Skill folder or plugin manifest that cannot be released as-is."""
 
 
 def git_tracked_files(path: Path) -> list[str]:
@@ -66,6 +79,149 @@ def git_tracked_files(path: Path) -> list[str]:
         check=True,
     )
     return sorted(entry for entry in result.stdout.split("\0") if entry)
+
+
+def load_json(path: Path) -> dict:
+    """Read a JSON manifest, or raise SkillError saying what is wrong with it."""
+    shown = path.relative_to(REPO_ROOT).as_posix()
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        raise SkillError(f"{shown}: file is missing") from None
+    except json.JSONDecodeError as exc:
+        raise SkillError(f"{shown}: invalid JSON ({exc})") from None
+    if not isinstance(data, dict):
+        raise SkillError(f"{shown}: must hold a JSON object")
+    return data
+
+
+def validate_plugins(expect_version: str | None) -> dict[str, Path]:
+    """Check the marketplace and every plugin manifest; return name -> plugin folder.
+
+    The marketplace entry, the plugin folder and the `name` in plugin.json must
+    agree: users install a plugin by its entry name, Claude Code namespaces the
+    Skills by the manifest name, and a mismatch would show one plugin under two
+    names. All plugins carry the same version, because a release tags the whole
+    repository at once, and Claude Code keeps users on a plugin's version until
+    it changes.
+    """
+    marketplace_shown = MARKETPLACE.relative_to(REPO_ROOT).as_posix()
+    try:
+        marketplace = load_json(MARKETPLACE)
+    except SkillError as exc:
+        raise SkillError(f"  - {exc}") from None
+
+    entries = marketplace.get("plugins")
+    if not isinstance(entries, list) or not entries:
+        raise SkillError(f"  - {marketplace_shown}: 'plugins' must list at least one plugin")
+
+    plugins: dict[str, Path] = {}
+    versions: dict[str, str] = {}
+    problems: list[str] = []
+
+    for entry in entries:
+        name = entry.get("name") if isinstance(entry, dict) else None
+        source = entry.get("source") if isinstance(entry, dict) else None
+        # Only plugins inside this repository: their Skills are validated and
+        # packaged from this checkout, which a plugin fetched from elsewhere is not.
+        if (
+            not isinstance(name, str)
+            or not isinstance(source, str)
+            or not source.startswith("./")
+            or ".." in source
+        ):
+            problems.append(
+                f"{marketplace_shown}: entry {entry!r} needs a 'name' and a "
+                "'./'-relative 'source' inside this repository"
+            )
+            continue
+
+        plugin_dir = REPO_ROOT / source[2:].rstrip("/")
+        if plugin_dir.name != name:
+            problems.append(
+                f"{marketplace_shown}: plugin '{name}' points at '{source}' — "
+                "the plugin folder must carry the plugin's name"
+            )
+            continue
+
+        if name in plugins:
+            problems.append(f"{marketplace_shown}: plugin '{name}' is listed twice")
+            continue
+
+        try:
+            manifest = load_json(plugin_dir / ".claude-plugin" / "plugin.json")
+        except SkillError as exc:
+            problems.append(str(exc))
+            continue
+
+        manifest_shown = f"{name}/.claude-plugin/plugin.json"
+        if manifest.get("name") != name:
+            problems.append(
+                f"{manifest_shown}: name '{manifest.get('name')}' does not match the "
+                f"marketplace entry '{name}'"
+            )
+            continue
+        if not manifest.get("description"):
+            problems.append(f"{manifest_shown}: has no 'description'")
+            continue
+        version = manifest.get("version")
+        if not isinstance(version, str) or not version:
+            problems.append(f"{manifest_shown}: has no 'version'")
+            continue
+
+        plugins[name] = plugin_dir
+        versions[name] = version
+
+    if len(set(versions.values())) > 1:
+        listed = ", ".join(f"{name} {version}" for name, version in versions.items())
+        problems.append(
+            f"plugins carry different versions ({listed}) — a release tags all of "
+            "them at once, so give them the same version"
+        )
+
+    if expect_version is not None:
+        for name, version in versions.items():
+            if version != expect_version:
+                problems.append(
+                    f"{name}/.claude-plugin/plugin.json: version '{version}' is not "
+                    f"the release version '{expect_version}' — bump it before tagging"
+                )
+
+    if problems:
+        raise SkillError("\n".join(f"  - {p}" for p in problems))
+
+    return plugins
+
+
+def frontmatter_value(frontmatter: str, key: str) -> str | None:
+    """Return the value of a top-level frontmatter key as one string.
+
+    Covers the forms the Skills use: a quoted or plain scalar on the key's own
+    line, and a folded (`>`) or literal (`|`) block on the indented lines below
+    it. This is no YAML parser, only enough to measure what Claude and ChatGPT
+    read.
+    """
+    lines = frontmatter.splitlines()
+    for index, line in enumerate(lines):
+        match = re.match(rf"^{re.escape(key)}:\s*(.*?)\s*$", line)
+        if not match:
+            continue
+
+        value = match.group(1)
+        if value[:1] in (">", "|"):
+            block = []
+            for following in lines[index + 1:]:
+                if following.strip() and not following[:1].isspace():
+                    break
+                block.append(following.strip())
+            separator = " " if value[0] == ">" else "\n"
+            return separator.join(part for part in block if part)
+
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in "\"'":
+            value = value[1:-1]
+        return value
+
+    return None
 
 
 def read_frontmatter_name(skill_md: Path) -> str:
@@ -88,31 +244,62 @@ def read_frontmatter_name(skill_md: Path) -> str:
         raise SkillError(
             f"{skill_md}: name '{name}' must be lowercase and hyphenated"
         )
-    if not re.search(r"^description:\s*\S", frontmatter, re.MULTILINE):
+    if len(name) > MAX_NAME_LENGTH:
+        raise SkillError(
+            f"{skill_md}: name '{name}' is longer than {MAX_NAME_LENGTH} characters"
+        )
+
+    description = frontmatter_value(frontmatter, "description")
+    if not description:
         raise SkillError(f"{skill_md}: frontmatter has no 'description' field")
+    if len(description) > MAX_DESCRIPTION_LENGTH:
+        raise SkillError(
+            f"{skill_md}: description has {len(description)} characters, the "
+            f"Agent Skills format allows at most {MAX_DESCRIPTION_LENGTH}"
+        )
 
     return name
 
 
-def discover_skills() -> list[Path]:
-    """Return every Skill folder in the repo, sorted by name."""
+def discover_skills(plugins: dict[str, Path]) -> list[Path]:
+    """Return every Skill folder of every plugin, sorted by plugin and name.
+
+    A plugin loads its Skills from `skills/<name>/` and nowhere else. A Skill
+    folder placed directly in the plugin folder, where the layout before the
+    plugins kept it, would be skipped by Claude and ChatGPT without a word, so
+    it is reported instead.
+    """
     skills = []
-    for family in SKILL_FAMILIES:
-        family_dir = REPO_ROOT / family
-        if not family_dir.is_dir():
+    misplaced = []
+    for plugin_dir in plugins.values():
+        skills_dir = plugin_dir / "skills"
+        for candidate in sorted(plugin_dir.iterdir()):
+            if candidate != skills_dir and (candidate / "SKILL.md").is_file():
+                misplaced.append(
+                    f"  - {candidate.relative_to(REPO_ROOT).as_posix()}: Skill "
+                    f"folder outside 'skills/' — move it to "
+                    f"{skills_dir.relative_to(REPO_ROOT).as_posix()}/{candidate.name}/"
+                )
+        if not skills_dir.is_dir():
             continue
-        for candidate in sorted(family_dir.iterdir()):
+        for candidate in sorted(skills_dir.iterdir()):
             if (candidate / "SKILL.md").is_file():
                 skills.append(candidate)
+            elif candidate.is_dir():
+                misplaced.append(
+                    f"  - {candidate.relative_to(REPO_ROOT).as_posix()}: folder in "
+                    "'skills/' without a SKILL.md"
+                )
+
+    if misplaced:
+        raise SkillError("\n".join(misplaced))
     return skills
 
 
 def validate(skills: list[Path]) -> dict[str, Path]:
     """Check every Skill and return a name -> folder map, or raise SkillError."""
     if not skills:
-        raise SkillError(
-            f"no Skill folders found under {'/, '.join(SKILL_FAMILIES)}/"
-        )
+        raise SkillError("no Skill folders found in the plugins' skills/ directories")
 
     by_name: dict[str, Path] = {}
     problems: list[str] = []
@@ -187,7 +374,7 @@ def build_skill_zip(name: str, skill_dir: Path, out_dir: Path) -> Path:
 
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as archive:
         for tracked in git_tracked_files(skill_dir):
-            # technical-triz/trimming/SKILL.md  ->  trimming/SKILL.md
+            # technical-triz/skills/trimming/SKILL.md  ->  trimming/SKILL.md
             arcname = f"{name}/{tracked[len(prefix):]}"
             add_to_zip(archive, REPO_ROOT / tracked, arcname)
 
@@ -275,20 +462,30 @@ def main() -> int:
         action="store_true",
         help="validate all Skills and exit without writing anything",
     )
+    parser.add_argument(
+        "--expect-version",
+        metavar="VERSION",
+        help="fail unless every plugin.json carries this version "
+        "(the release tag without its leading 'v')",
+    )
     args = parser.parse_args()
 
     try:
-        skills = discover_skills()
+        plugins = validate_plugins(args.expect_version)
+        skills = discover_skills(plugins)
         by_name = validate(skills)
     except SkillError as exc:
-        print(f"error: Skill validation failed:\n{exc}", file=sys.stderr)
+        print(f"error: validation failed:\n{exc}", file=sys.stderr)
         return 1
     except subprocess.CalledProcessError as exc:
         print(f"error: git failed: {exc.stderr.strip()}", file=sys.stderr)
         return 1
 
     if args.check:
-        print(f"OK: {len(by_name)} Skills are valid and ready to package")
+        print(
+            f"OK: {len(by_name)} Skills in {len(plugins)} plugins are valid "
+            "and ready to package"
+        )
         return 0
 
     out_dir = Path(args.out)
@@ -314,7 +511,8 @@ def main() -> int:
         return 1
 
     write_checksums(built, out_dir)
-    print(f"\nBuilt {len(built)} archives in {out_dir.relative_to(REPO_ROOT)}/")
+    shown = out_dir.relative_to(REPO_ROOT) if out_dir.is_relative_to(REPO_ROOT) else out_dir
+    print(f"\nBuilt {len(built)} archives in {shown}/")
     return 0
 
 

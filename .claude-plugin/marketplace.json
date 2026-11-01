@@ -1,0 +1,19 @@
+{
+  "name": "truinorva-triz",
+  "owner": {
+    "name": "Truinorva"
+  },
+  "description": "TRIZ (Theory of Inventive Problem Solving) Skills for Claude and ChatGPT: technical TRIZ for engineering problems, business TRIZ for organizational and people-centric ones.",
+  "plugins": [
+    {
+      "name": "technical-triz",
+      "source": "./technical-triz",
+      "category": "productivity"
+    },
+    {
+      "name": "business-triz",
+      "source": "./business-triz",
+      "category": "productivity"
+    }
+  ]
+}

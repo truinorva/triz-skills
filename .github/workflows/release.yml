@@ -2,7 +2,8 @@ name: Package Skills
 
 # Skill ZIPs are never stored in the repository. They are built from the Skill
 # folders on demand and published as GitHub Release assets, so the repo keeps
-# exactly one copy of every Skill: the editable folder.
+# exactly one copy of every Skill: the editable folder. The same run checks the
+# plugin marketplace that Claude Code and ChatGPT install from.
 on:
   push:
     tags:
@@ -31,8 +32,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Build every Skill package
-        run: python scripts/build_skills.py --out dist
+      - name: Validate the plugins and build every Skill package
+        env:
+          REF: ${{ github.ref }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          # On a release tag, every plugin.json must carry the tag's version:
+          # Claude Code keeps users on a plugin's version until it changes.
+          if [[ "$REF" == refs/tags/v* ]]; then
+            python scripts/build_skills.py --out dist --expect-version "${TAG#v}"
+          else
+            python scripts/build_skills.py --out dist
+          fi
 
       - name: Upload packages as a workflow artefact
         uses: actions/upload-artifact@v4
