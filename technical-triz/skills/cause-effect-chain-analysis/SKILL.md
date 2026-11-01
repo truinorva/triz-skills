@@ -6,7 +6,7 @@ description: "TRIZ Cause and Effect Chain Analysis (CECA) and Root Cause Analysi
 <!-- 
   Based on the TRIZ CECA and RCA Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Cause and Effect Chain Analysis (CECA) and Root Cause Analysis (RCA)

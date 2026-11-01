@@ -6,7 +6,7 @@ description: "TRIZ Patent Analyzer — identifies engineering and physical contr
 <!-- 
   Based on the TRIZ Patent Analyzer Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Patent Analyzer

@@ -6,7 +6,7 @@ description: "TRIZ Function and Interaction Analysis — analyzes technical syst
 <!-- 
   Based on the Function & Interaction Analysis GPT Prompt
   Copyright (c) 2025 Tanasak Pheunghua
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Function and Interaction Analysis

@@ -6,7 +6,7 @@ description: "TRIZ Smart Little People (SLP) method — uses imaginary tiny inte
 <!-- 
   Based on the TRIZ Smart Little People Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Smart Little People (SLP)

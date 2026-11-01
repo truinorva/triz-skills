@@ -6,7 +6,7 @@ description: "Advanced Function Analysis with Spatio-Temporal Considerations —
 <!-- 
   Based on the Advanced Function Analysis with Spatio-Temporal Considerations Prompt
   Copyright (c) 2025 Tanasak Pheunghua
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # Advanced Function Analysis with Spatio-Temporal Considerations

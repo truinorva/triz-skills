@@ -12,10 +12,12 @@ upload). That takes a ZIP whose root entry is the Skill folder itself:
 
     contradiction-solver.zip
     └── contradiction-solver/
+        ├── LICENSE
         ├── SKILL.md
         └── references/...
 
 This script builds exactly that, into an output directory that is never committed.
+The LICENSE comes from the repository root, since a Skill folder carries none.
 
 Only files tracked by Git are packaged, so untracked scratch files, editor
 backups and OS junk (.DS_Store, Thumbs.db) can never leak into a release.
@@ -54,6 +56,21 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # The marketplace file lists the plugins. Its location is fixed: Claude Code and
 # ChatGPT both look for it here when a repository is added as a marketplace.
 MARKETPLACE = REPO_ROOT / ".claude-plugin" / "marketplace.json"
+
+# MIT requires the copyright and permission notice in every copy. An installed
+# plugin is a copy of its plugin folder only, and a ZIP holds one Skill folder,
+# so each plugin carries a copy of this file and each ZIP gets one.
+LICENSE = REPO_ROOT / "LICENSE"
+
+# Every plugin also has an Agent Plugins manifest at its root. ChatGPT takes the
+# plugin's identity from it and its listing - name, subtitle, icon, starter
+# prompts - from extensions.com.openai.interface; Claude Code reads
+# .claude-plugin/plugin.json instead.
+AGENT_PLUGINS_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
+AGENT_PLUGINS_KEYS = {
+    "$schema", "name", "version", "description", "author", "homepage",
+    "repository", "license", "keywords", "extensions",
+}
 
 # Limits of the Agent Skills format, which Claude and ChatGPT both read. Staying
 # inside them keeps every Skill installable on both platforms.
@@ -169,6 +186,8 @@ def validate_plugins(expect_version: str | None) -> dict[str, Path]:
             problems.append(f"{manifest_shown}: has no 'version'")
             continue
 
+        problems.extend(check_license_copy(name, plugin_dir))
+        problems.extend(check_openai_manifest(name, plugin_dir, manifest))
         plugins[name] = plugin_dir
         versions[name] = version
 
@@ -191,6 +210,87 @@ def validate_plugins(expect_version: str | None) -> dict[str, Path]:
         raise SkillError("\n".join(f"  - {p}" for p in problems))
 
     return plugins
+
+
+def check_license_copy(name: str, plugin_dir: Path) -> list[str]:
+    """Return the problems with a plugin's copy of the repository LICENSE."""
+    copy = plugin_dir / "LICENSE"
+    if not copy.is_file():
+        return [f"{name}/LICENSE: missing — copy the repository's LICENSE into the plugin"]
+    if normalize(copy.read_bytes()) != normalize(LICENSE.read_bytes()):
+        return [f"{name}/LICENSE: differs from the repository's LICENSE — copy it again"]
+    return []
+
+
+def check_openai_manifest(name: str, plugin_dir: Path, manifest: dict) -> list[str]:
+    """Return the problems with a plugin's root plugin.json, the one ChatGPT reads.
+
+    It repeats the identity from .claude-plugin/plugin.json, so every field set
+    there must carry the same value here: a version bumped in one file only
+    would give the plugin two versions. The listing limits are those of the
+    ChatGPT plugin directory, and every icon the listing names must exist.
+    """
+    shown = f"{name}/plugin.json"
+    try:
+        portable = load_json(plugin_dir / "plugin.json")
+    except SkillError as exc:
+        return [str(exc)]
+
+    problems = []
+    if portable.get("$schema") != AGENT_PLUGINS_SCHEMA:
+        problems.append(f"{shown}: '$schema' must be {AGENT_PLUGINS_SCHEMA}")
+    unknown = sorted(set(portable) - AGENT_PLUGINS_KEYS)
+    if unknown:
+        problems.append(f"{shown}: {unknown} are not Agent Plugins manifest fields")
+    for key, value in manifest.items():
+        if portable.get(key) != value:
+            problems.append(
+                f"{shown}: '{key}' differs from {name}/.claude-plugin/plugin.json"
+            )
+
+    extensions = portable.get("extensions")
+    openai = extensions.get("com.openai") if isinstance(extensions, dict) else None
+    interface = openai.get("interface") if isinstance(openai, dict) else None
+    if not isinstance(interface, dict):
+        problems.append(f"{shown}: has no extensions.com.openai.interface")
+        return problems
+
+    for key, limit in (
+        ("displayName", 30),
+        ("shortDescription", 30),
+        ("longDescription", 4000),
+        ("developerName", 80),
+        ("category", 80),
+    ):
+        value = interface.get(key)
+        if not isinstance(value, str) or not value or len(value) > limit:
+            problems.append(f"{shown}: interface.{key} must be 1 to {limit} characters")
+
+    prompts = interface.get("defaultPrompt", [])
+    if isinstance(prompts, str):
+        prompts = [prompts]
+    if len(prompts) > 3 or any(not isinstance(p, str) or len(p) > 128 for p in prompts):
+        problems.append(
+            f"{shown}: interface.defaultPrompt takes at most 3 prompts of at most "
+            "128 characters"
+        )
+
+    for key in ("composerIcon", "logo"):
+        path = interface.get(key)
+        if path is None:
+            continue
+        if (
+            not isinstance(path, str)
+            or not path.startswith("./")
+            or ".." in path
+            or not (plugin_dir / path[2:]).is_file()
+        ):
+            problems.append(
+                f"{shown}: interface.{key} '{path}' must be a './' path to a file "
+                "inside the plugin"
+            )
+
+    return problems
 
 
 def frontmatter_value(frontmatter: str, key: str) -> str | None:
@@ -372,11 +472,21 @@ def build_skill_zip(name: str, skill_dir: Path, out_dir: Path) -> Path:
     zip_path = out_dir / f"{name}.zip"
     prefix = skill_dir.relative_to(REPO_ROOT).as_posix() + "/"
 
+    # technical-triz/skills/trimming/SKILL.md  ->  trimming/SKILL.md
+    entries = {
+        f"{name}/{tracked[len(prefix):]}": REPO_ROOT / tracked
+        for tracked in git_tracked_files(skill_dir)
+    }
+    if f"{name}/LICENSE" in entries:
+        raise SkillError(
+            f"{prefix}LICENSE: the build adds the repository's LICENSE to every "
+            "archive — remove the Skill's own copy"
+        )
+    entries[f"{name}/LICENSE"] = LICENSE
+
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as archive:
-        for tracked in git_tracked_files(skill_dir):
-            # technical-triz/skills/trimming/SKILL.md  ->  trimming/SKILL.md
-            arcname = f"{name}/{tracked[len(prefix):]}"
-            add_to_zip(archive, REPO_ROOT / tracked, arcname)
+        for arcname, source in sorted(entries.items()):
+            add_to_zip(archive, source, arcname)
 
     verify_zip(zip_path, name)
     return zip_path

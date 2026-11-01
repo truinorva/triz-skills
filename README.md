@@ -25,7 +25,7 @@ This approach allows for:
 ## 🔧 Key Features
 
 - ✅ **Self-contained Skills** – each Skill is one folder with a `SKILL.md` plus optional `references/` and `assets/`
-- 🔌 **One marketplace for Claude and ChatGPT** – both read the same `.claude-plugin/marketplace.json`, so there is no second copy of anything per platform
+- 🔌 **One marketplace for Claude and ChatGPT** – both read the same `.claude-plugin/marketplace.json` and the same Skill folders, so no Skill exists twice
 - 🧭 **Two plugins** – `technical-triz` for engineering, `business-triz` for organizational and people-centric problems
 - 📦 **ZIP per Skill for single uploads** – built on demand and attached to a GitHub Release; no archives are stored in the repo (see [Releasing](#-releasing))
 - 📖 **English-first, term-bilingual** – content is written in English, with key terms also given in another language (e.g. German) so the AI handles terminology correctly
@@ -39,7 +39,7 @@ This approach allows for:
 
 A *Skill* is a folder that packages instructions, reference data, and optional helper files so an AI assistant can reliably perform a specialized task. At minimum it contains a `SKILL.md` file with YAML frontmatter (a `name` and a `description`). The assistant reads the `description` to decide *when* to activate the Skill, then follows the body of `SKILL.md` to do the work, loading files from `references/` only as needed. Claude and ChatGPT read the same open Agent Skills format, so one `SKILL.md` serves both.
 
-A *plugin* bundles Skills: they sit under its `skills/` folder, next to a manifest at `.claude-plugin/plugin.json`. A *marketplace* lists plugins in `.claude-plugin/marketplace.json`. ChatGPT accepts this Claude-compatible format as is, which is why the repository carries one set of manifests and not two.
+A *plugin* bundles Skills: they sit under its `skills/` folder, next to two manifests. Claude Code reads `.claude-plugin/plugin.json`; ChatGPT reads `plugin.json` at the plugin root, written in the open Agent Plugins format, for the plugin's identity and for its listing — display name, subtitle, icon, and starter prompts under `extensions.com.openai.interface`. Both manifests carry the same name, version and description. A *marketplace* lists plugins in `.claude-plugin/marketplace.json`, and ChatGPT accepts that Claude-compatible file as is.
 
 ---
 
@@ -58,7 +58,11 @@ triz-skills/
 │
 ├── business-triz/                # plugin: TRIZ for organizational, service & people-centric problems
 │   ├── .claude-plugin/
-│   │   └── plugin.json           # plugin name, version, description
+│   │   └── plugin.json           # Claude Code: plugin name, version, description
+│   ├── plugin.json               # ChatGPT: the same identity plus the listing
+│   ├── assets/
+│   │   └── logo.png              # icon of the ChatGPT listing
+│   ├── LICENSE                   # copy of the repository's LICENSE, travels with the plugin
 │   └── skills/
 │       └── <skill-name>/
 │           ├── SKILL.md
@@ -68,6 +72,10 @@ triz-skills/
 ├── technical-triz/               # plugin: classical engineering-oriented TRIZ
 │   ├── .claude-plugin/
 │   │   └── plugin.json
+│   ├── plugin.json
+│   ├── assets/
+│   │   └── logo.png
+│   ├── LICENSE
 │   └── skills/
 │       └── <skill-name>/
 │           ├── SKILL.md
@@ -207,7 +215,7 @@ The repository reaches users in two ways, and they update differently:
 
 ### Cutting a release
 
-1. Set the new `version` in [`technical-triz/.claude-plugin/plugin.json`](technical-triz/.claude-plugin/plugin.json) and [`business-triz/.claude-plugin/plugin.json`](business-triz/.claude-plugin/plugin.json) — both plugins always carry the same version — and merge that into `main`.
+1. Set the new `version` in all four manifests — [`technical-triz/.claude-plugin/plugin.json`](technical-triz/.claude-plugin/plugin.json), [`technical-triz/plugin.json`](technical-triz/plugin.json), [`business-triz/.claude-plugin/plugin.json`](business-triz/.claude-plugin/plugin.json) and [`business-triz/plugin.json`](business-triz/plugin.json); both plugins always carry the same version — and merge that into `main`.
 2. Tag the commit and push the tag:
 
    ```bash
@@ -223,6 +231,7 @@ A single-Skill upload (e.g. to Claude.ai) takes an archive whose **root entry is
 ```plaintext
 contradiction-solver.zip
 └── contradiction-solver/          # folder name == frontmatter `name`
+    ├── LICENSE                    # the repository's LICENSE, added by the build
     ├── SKILL.md
     ├── references/...
     └── assets/...                 # if the Skill ships any
@@ -254,15 +263,23 @@ The same validation runs locally and in CI (on every push and pull request), so 
 
 - `.claude-plugin/marketplace.json` lists every plugin with a `./`-relative `source` inside this repository, and the plugin folder carries the plugin's name
 - each plugin has `.claude-plugin/plugin.json` with the same `name`, a `description` and a `version`; all plugins carry the same version, and on a release tag it is the tag's version
+- each plugin's root `plugin.json` declares the Agent Plugins schema, repeats every field of `.claude-plugin/plugin.json` with the same value, and carries a ChatGPT listing within the directory's limits: display name and subtitle at most 30 characters, at most three starter prompts of at most 128 characters, and icons that exist inside the plugin
+- each plugin's `LICENSE` is identical to the repository's — MIT requires the notice in every copy, and an installed plugin is a copy of its folder only
 - every Skill sits in `<plugin>/skills/<name>/` — a Skill folder anywhere else in a plugin, or a folder in `skills/` without a `SKILL.md`, fails the build, because Claude and ChatGPT would skip it without a word
 - `SKILL.md` exists and starts with YAML frontmatter carrying `name` and `description`
 - `name` is lowercase-hyphenated, at most 64 characters, and **matches the folder name**
 - `description` is at most 1024 characters, the limit of the Agent Skills format
 - no two Skills share a `name`
 - every Skill has committed files
-- each finished archive really contains `<name>/SKILL.md` at exactly one top-level folder
+- each finished archive really contains `<name>/SKILL.md` at exactly one top-level folder, plus the repository's `LICENSE`
 
-To check the manifests against Claude Code's own schema as well, run `claude plugin validate .` and `claude plugin validate ./technical-triz`.
+CI also checks the manifests against Claude Code's own schema, with a pinned Claude Code version. The same check runs locally:
+
+```bash
+claude plugin validate --strict .
+claude plugin validate --strict ./technical-triz
+claude plugin validate --strict ./business-triz
+```
 
 ---
 
@@ -296,7 +313,7 @@ Things to observe:
 - **Write in English first.** English is the primary language for all `SKILL.md` instructions and documentation.
 - **Add key terms in another language to anchor terminology.** Where a precise term or phrasing matters, include the equivalent in another language (e.g. German) inline so the AI maps and handles it correctly. See [`contradiction-solver`](technical-triz/skills/contradiction-solver/) for examples — the contradiction formulation gives both `IF … THEN … BUT …` and `WENN … DANN … ABER …`, and names both *Altshuller Matrix* and *Altschuller Matrix*. Parallel reference files (e.g. `*_EN.md` / `*_DE.md`) are welcome for larger bilingual data sets.
 - **One Skill = one folder = one job.** Prefer several focused Skills over one giant Skill; it improves trigger accuracy and reuse.
-- **License header.** Add a short license/attribution comment near the top of `SKILL.md` referencing the repo-root `LICENSE`.
+- **License header.** Add a short license/attribution comment near the top of `SKILL.md` that names the authors and says *Licensed under the MIT License — see the LICENSE file shipped with this Skill.* The plugin folder and every ZIP carry that file.
 
 A fuller authoring guide and a Skill template will live in [`docs/`](docs/).
 

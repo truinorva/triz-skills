@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "technical-triz",
+  "version": "1.1.0",
+  "description": "Classical engineering TRIZ: engineering and physical contradictions with the 40 Inventive Principles, Function Analysis, Trimming, the 76 Standard Solutions, Ideality, Resource Analysis, the System Operator, root-cause and patent analysis.",
+  "author": {
+    "name": "Truinorva"
+  },
+  "homepage": "https://github.com/truinorva/triz-skills",
+  "repository": "https://github.com/truinorva/triz-skills",
+  "license": "MIT",
+  "keywords": ["triz", "innovation", "inventive-principles", "contradiction", "function-analysis", "engineering"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Technical TRIZ",
+        "shortDescription": "Engineering problem solving",
+        "longDescription": "TRIZ (Theory of Inventive Problem Solving) methods for engineering problems. Formulate and resolve engineering and physical contradictions with the Altshuller Matrix, Matrix 2003 and the 40 Inventive Principles; model a system with Function Analysis or Substance-Field Analysis and apply the 76 Standard Solutions; trim components; find existing resources and derive new ones; trace root causes and root conflicts; extract contradictions from patents; and explore how a system evolves with the System Operator. For engineers, product developers and TRIZ practitioners. The Skills guide a structured analysis and suggest solution directions; they do not replace engineering judgment, testing or safety verification.",
+        "developerName": "Truinorva",
+        "category": "Productivity",
+        "websiteURL": "https://github.com/truinorva/triz-skills",
+        "defaultPrompt": [
+          "I have a technical contradiction: the housing must get stiffer without getting heavier.",
+          "Run a TRIZ function analysis of my system and identify its main function.",
+          "Walk me through the Innovation Situation Questionnaire for my problem."
+        ],
+        "brandColor": "#378BC1",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}

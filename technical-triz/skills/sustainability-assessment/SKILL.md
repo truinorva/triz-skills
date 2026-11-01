@@ -20,7 +20,7 @@ description: >
 
 <!-- 
   Copyright (c) 2026 Horst Nähler
-  Licensed under the MIT License -- see LICENSE in the repository root.
+  Licensed under the MIT License -- see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Sustainability Assessment Skill

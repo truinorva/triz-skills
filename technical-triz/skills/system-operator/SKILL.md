@@ -8,7 +8,7 @@ description: "TRIZ System Operator / Multi-Screen Diagram (MSD / 9 Boxes / 9 Scr
   Copyright (c) 2026 Robert Adunka, based on:
   - TRIZ System Operator (9 Boxes) Prompt by Jens Traeger (c) 2025
   - Business TRIZ Multi-Screen Diagram (MSD) Prompt by Robert Adunka (c) 2025
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ System Operator (Multi-Screen Diagram)

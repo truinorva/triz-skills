@@ -6,7 +6,7 @@ description: "TRIZ Trimming and Trimming Rules — streamlines engineering syste
 <!-- 
   Based on the TRIZ Trimming and Trimming Rules Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Trimming and Trimming Rules

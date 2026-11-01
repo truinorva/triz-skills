@@ -1,7 +1,7 @@
 <!-- 
   Based on the Derivative Resources Analysis Prompt (Extended TRIZ Framework V4.0)
   Copyright (c) 2025-2026 Tanasak Pheunghua
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # The derivative resource operator catalogue

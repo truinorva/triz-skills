@@ -6,7 +6,7 @@ description: "TRIZ Resource Analysis — identifies and creatively utilizes all 
 <!-- 
   Based on the TRIZ Resource Analysis Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Resource Analysis
