@@ -6,7 +6,7 @@ description: "Non-Engineer Function Analysis using simplified TRIZ — helps use
 <!-- 
   Based on the Non-Engineer Function Analysis (Simplified TRIZ) Prompt
   Copyright (c) 2025 Tanasak Pheunghua
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # Non-Engineer Function Analysis (Simplified TRIZ)

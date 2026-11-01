@@ -6,7 +6,7 @@ description: "Interactive TRIZ TRIMMING with extended rules (A, B, C, D, E, X) �
 <!-- 
   Based on the Interactive TRIMMING Prompt
   Copyright (c) 2025 Tanasak Pheunghua
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # Interactive TRIMMING (Extended Rules)

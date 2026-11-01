@@ -6,7 +6,7 @@ description: "TRIZ PV-MPV Analysis — structured facilitator for identifying Pa
 <!-- 
   Based on the TRIZ PV-MPV Facilitator Prompt
   Copyright (c) 2025 Robert Adunka
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ PV-MPV Analysis

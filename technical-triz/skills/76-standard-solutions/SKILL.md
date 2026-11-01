@@ -6,7 +6,7 @@ description: "TRIZ 76 Standard Solutions — guides users through solving techni
 <!-- 
   Based on the TRIZ 76 Standard Solutions Prompt
   Copyright (c) 2025 Ece Oezbey
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ 76 Standard Solutions

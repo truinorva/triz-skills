@@ -6,7 +6,7 @@ description: "TRIZ Function Analysis for technical systems — identifies tools,
 <!-- 
   Based on the TRIZ Function Analysis Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Function Analysis

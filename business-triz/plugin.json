@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "business-triz",
+  "version": "1.1.0",
+  "description": "TRIZ for organizational, service and people-centric problems: Function Analysis in plain language for non-engineers, Perception Mapping of stakeholder beliefs, and solution ideas across super-system and sub-system levels.",
+  "author": {
+    "name": "Truinorva"
+  },
+  "homepage": "https://github.com/truinorva/triz-skills",
+  "repository": "https://github.com/truinorva/triz-skills",
+  "license": "MIT",
+  "keywords": ["triz", "innovation", "business", "organization", "stakeholders", "perception-mapping"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Business TRIZ",
+        "shortDescription": "Organizational problem solving",
+        "longDescription": "TRIZ methods for organizational, service and people-centric problems. Break down what each role and activity does with a plain-language Function Analysis for non-engineers in fields such as education, healthcare, customer service, retail, HR and hospitality; surface stakeholder beliefs and the hidden contradictions between them with Perception Mapping; and generate solution ideas from the resources of the super-system and the sub-systems. For managers, facilitators and consultants. The Skills structure the thinking; they do not replace knowledge of the people and the organization involved.",
+        "developerName": "Truinorva",
+        "category": "Productivity",
+        "websiteURL": "https://github.com/truinorva/triz-skills",
+        "defaultPrompt": [
+          "Map the perceptions behind a recurring conflict in our team.",
+          "Explain in plain language what each role in our customer service process does.",
+          "Find solution ideas for our problem at super-system and sub-system level."
+        ],
+        "brandColor": "#378BC1",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ description: "TRIZ System Description (Mini-ISQ) — guides users through creati
 <!-- 
   Based on the System Description (Mini-ISQ) Prompt
   Copyright (c) 2025 Robert Adunka
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ System Description (Mini-ISQ)

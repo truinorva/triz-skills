@@ -6,7 +6,7 @@ description: "TRIZ Function-Oriented Search (FOS), Method-Oriented Search (MOS),
 <!-- 
   Based on the TRIZ Function-Oriented Search Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Function-Oriented Search

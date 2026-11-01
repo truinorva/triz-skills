@@ -7,7 +7,7 @@ description: "TRIZ Problem Operator (Problem-Oriented Nine Screen Approach) — 
   Based on the TRIZ Problem Operator (Problem-Oriented Nine Screen Approach) Prompt
   Copyright (c) 2026 Robert Adunka, based on the Problem-Oriented 9 Boxes concept
   by Jens Traeger (c) 2025
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Problem Operator (Problem-Oriented Nine Screen Approach)

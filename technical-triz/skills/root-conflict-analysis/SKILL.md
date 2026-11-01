@@ -6,7 +6,7 @@ description: "TRIZ Root Conflict Analysis (RCA+) — a domain-independent techni
 <!-- 
   Based on Souchkov's Root Conflict Analysis (RCA+) methodology.
   Skill implementation Copyright (c) 2026 Jens Traeger
-  Licensed under the MIT License -- see LICENSE in the repository root.
+  Licensed under the MIT License -- see the LICENSE file shipped with this Skill.
 -->
 
 # Root Conflict Analysis (RCA+)

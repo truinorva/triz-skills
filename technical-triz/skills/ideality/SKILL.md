@@ -6,7 +6,7 @@ description: "TRIZ Ideality — increases the ideality of a technical system by 
 <!-- 
   Based on the TRIZ Ideality Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Ideality

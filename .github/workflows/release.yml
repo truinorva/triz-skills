@@ -45,6 +45,23 @@ jobs:
             python scripts/build_skills.py --out dist
           fi
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate the manifests with Claude Code
+        env:
+          # plugin validate needs no login; this keeps the CLI from phoning home.
+          CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
+        run: |
+          # Claude Code's own schema check, on top of build_skills.py. Pinned so
+          # a new release cannot change the verdict without a commit here.
+          npm install --global --no-audit --no-fund @anthropic-ai/claude-code@2.1.302
+          claude plugin validate --strict .
+          claude plugin validate --strict ./technical-triz
+          claude plugin validate --strict ./business-triz
+
       - name: Upload packages as a workflow artefact
         uses: actions/upload-artifact@v4
         with:

@@ -6,7 +6,7 @@ description: "Root Cause Analysis for engineering failures — traces an observe
 <!-- 
   Based on the Root Cause Analysis GPT Prompt
   Copyright (c) 2025 Tanasak Pheunghua
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # Root Cause Analysis (RCA)

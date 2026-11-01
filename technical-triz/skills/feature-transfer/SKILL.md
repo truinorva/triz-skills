@@ -6,7 +6,7 @@ description: "TRIZ Feature Transfer — helps enhance systems by adopting benefi
 <!-- 
   Based on the TRIZ Feature Transfer Prompt
   Copyright (c) 2025 Jens Traeger
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Feature Transfer

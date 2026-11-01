@@ -6,7 +6,7 @@ description: "Business-TRIZ: Solutions at System Levels — helps users define S
 <!-- 
   Based on the Business-TRIZ: Solutions at System Levels Prompt
   Copyright (c) 2025 Robert Adunka
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # Business-TRIZ: Solutions at System Levels

@@ -6,7 +6,7 @@ description: "TRIZ Perception Mapping for surfacing stakeholder beliefs, buildin
 <!-- 
   Based on the Business Perception Mapping Prompt
   Copyright (c) 2025 Dr. Robert Adunka
-  Licensed under the MIT License — see LICENSE in the repository root.
+  Licensed under the MIT License — see the LICENSE file shipped with this Skill.
 -->
 
 # TRIZ Perception Mapping
