@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "business-triz",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "TRIZ for organizational, service and people-centric problems: Function Analysis in plain language for non-engineers, Perception Mapping of stakeholder beliefs, and solution ideas across super-system and sub-system levels.",
   "author": {
     "name": "Truinorva"

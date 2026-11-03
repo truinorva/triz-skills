@@ -90,10 +90,6 @@ If a harmful or insufficient interaction exists, generate variants:
 For the systematic form — one transformation per SFM slot, with a prescribed output format per
 variant — see section 9 of `references/76_standard_solutions_guide.md`.
 
-## ARIZ fallback
-
-Switch to ARIZ if no standard solution resolves the contradiction. Formulate the contradiction (technical/physical), analyze operational zone, time, resources, and use ARIZ systematically. For the physical contradiction use the `physical-contradictions` skill, which carries the binding strategy sets.
-
 ## Examples
 
 **Measurement Problem:** A parameter (temperature inside a rotating component) cannot be measured directly. -> Use Class 4 solution (e.g., 4.1.1 — indirect measurement), optionally apply Class 5.
