@@ -135,7 +135,7 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 
 ## ▶️ Installing the Skills
 
-The marketplace is called `truinorva-triz` and offers two plugins, **Technical TRIZ** (`technical-triz`) and **Business TRIZ** (`business-triz`). Install one or both; each brings all Skills of its family. Once installed, describe your problem and the assistant activates the matching Skill based on its `description`.
+The repository `truinorva/triz-skills` is a plugin marketplace named `truinorva-triz-skills`: you add it by the repository, and install its plugins with `@truinorva-triz-skills`. It offers two plugins, **Technical TRIZ** (`technical-triz`) and **Business TRIZ** (`business-triz`). Install one or both; each brings all Skills of its family. Once installed, describe your problem and the assistant activates the matching Skill based on its `description`.
 
 ### Claude.ai, the Claude desktop app and Cowork
 
@@ -150,19 +150,19 @@ In a Team or Enterprise organization, the Owner decides whether members may add 
 
 ```bash
 claude plugin marketplace add truinorva/triz-skills
-claude plugin install technical-triz@truinorva-triz
-claude plugin install business-triz@truinorva-triz
+claude plugin install technical-triz@truinorva-triz-skills
+claude plugin install business-triz@truinorva-triz-skills
 ```
 
-Inside a session, `/plugin marketplace add truinorva/triz-skills` and `/plugin install technical-triz@truinorva-triz` do the same. The Skills then appear under the plugin's name, e.g. `technical-triz:contradiction-solver`, from the next session on. A command-line install stays on that machine; if you added the plugins on your Claude account instead, Claude Code loads them from there and needs no install of its own.
+Inside a session, `/plugin marketplace add truinorva/triz-skills` and `/plugin install technical-triz@truinorva-triz-skills` do the same. The Skills then appear under the plugin's name, e.g. `technical-triz:contradiction-solver`, from the next session on. A command-line install stays on that machine; if you added the plugins on your Claude account instead, Claude Code loads them from there and needs no install of its own.
 
-To check the installation, `claude plugin list` shows both plugins as enabled, and `claude plugin details technical-triz@truinorva-triz` lists the Skills the plugin loaded. If you installed Skills from an earlier release ZIP, see [Switching from the ZIP releases](#switching-from-the-zip-releases).
+To check the installation, `claude plugin list` shows both plugins as enabled, and `claude plugin details technical-triz@truinorva-triz-skills` lists the Skills the plugin loaded. If you installed Skills from an earlier release ZIP, see [Switching from the ZIP releases](#switching-from-the-zip-releases).
 
 ### ChatGPT desktop app
 
 1. Open **Plugins**, then **Add → Add plugin marketplace**.
 2. Enter **Source** `https://github.com/truinorva/triz-skills` and **Git ref** `main`, leave *Sparse paths* empty, and select **Add marketplace**.
-3. On the **Personal** tab, the marketplace `truinorva-triz` lists **Technical TRIZ** and **Business TRIZ**. Select **+** next to each plugin you want.
+3. On the **Personal** tab, the marketplace `truinorva-triz-skills` lists **Technical TRIZ** and **Business TRIZ**. Select **+** next to each plugin you want.
 4. Start a new chat.
 
 The app keeps an installed plugin per version. If a plugin still shows its old content after a release, refresh the marketplace on the **Plugins** page, then remove the plugin and add it again.
@@ -206,7 +206,7 @@ A project can hold copies too, in its own `.claude/skills/`; move those the same
 
 **Claude.ai** — Skills uploaded under **Customize → Skills** load in your chats and, with the same account, in Claude Code. Once the plugins are on your Claude account, switch the uploaded TRIZ Skills off there with the switch next to each one; a switched-off Skill stays uploaded and can be switched on again. Do it in that order: a command-line install never reaches your chats, so without the plugins on your account the uploads are the only copy your chats have.
 
-**Both at once** — if you added the plugins on your Claude account and also installed them from the Claude Code command line, and `claude plugin list` shows a plugin twice, remove the command-line copy, e.g. `claude plugin uninstall technical-triz@truinorva-triz`.
+**Both at once** — if you added the plugins on your Claude account and also installed them from the Claude Code command line, and `claude plugin list` shows a plugin twice, remove the command-line copy, e.g. `claude plugin uninstall technical-triz@truinorva-triz-skills`.
 
 ### During development
 
