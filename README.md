@@ -111,18 +111,18 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | [`contradiction-solver`](technical-triz/skills/contradiction-solver/) | Resolves engineering contradictions via the Altshuller Matrix and Matrix 2003, and applies the 40 Inventive Principles. Hands physical contradictions over to [`physical-contradictions`](technical-triz/skills/physical-contradictions/). |
 | [`derivative-resources`](technical-triz/skills/derivative-resources/) | Transforms the resources a system already has into derivative resources (R0 → R1 → R2), useful functions and solution concepts. Continues [`resource-analysis`](technical-triz/skills/resource-analysis/). |
 | [`feature-transfer`](technical-triz/skills/feature-transfer/) | Enhances a system by adopting beneficial features from alternative/competing systems. |
-| [`function-analysis`](technical-triz/skills/function-analysis/) | Maps tools-actions-objects and reveals a technical system's main function. |
+| [`function-analysis`](technical-triz/skills/function-analysis/) | Maps tools-actions-objects and reveals a technical system's main function — automatic, semi-automatic and interactive modes, with a CSV export of the function model. |
 | [`function-analysis-advanced`](technical-triz/skills/function-analysis-advanced/) | Adds spatio-temporal (when/where) considerations to Function Analysis. |
 | [`function-interaction-analysis`](technical-triz/skills/function-interaction-analysis/) | Maps component interactions based on energy/matter/information flow. |
 | [`function-oriented-search`](technical-triz/skills/function-oriented-search/) | FOS / MOS and Scientific Effects search for solutions from other domains and nature. |
-| [`ideality`](technical-triz/skills/ideality/) | Moves a system toward its Ideal Final Result (IFR) by balancing useful vs. harmful functions. |
+| [`ideality`](technical-triz/skills/ideality/) | Raises a system's ideality with the four ideality strategies — development directions instead of product features, compared rather than calculated — and describes the ideal technical system. The Ideal Final Result (IFR) lives in [`resource-analysis`](technical-triz/skills/resource-analysis/). |
 | [`innovation-checklist`](technical-triz/skills/innovation-checklist/) | The Innovation Situation Questionnaire (ISQ / ISQ++) for structured problem framing. |
 | [`interactive-trimming`](technical-triz/skills/interactive-trimming/) | Extended interactive Trimming with rules A, B, C, D, E, X. |
-| [`mpv-analysis`](technical-triz/skills/mpv-analysis/) | Identifies Parameters of Value (PV) and Main Parameters of Value (MPV). |
+| [`mpv-analysis`](technical-triz/skills/mpv-analysis/) | MPV Discovery (Adunka / Litvin) — from a business challenge via Voice of the Product and Voice of the Customer to at most three Main Parameters of Value (MPV) and their physical parameters. |
 | [`patent-analyzer`](technical-triz/skills/patent-analyzer/) | Extracts TRIZ parameters and contradictions from patent texts. |
 | [`physical-contradictions`](technical-triz/skills/physical-contradictions/) | Resolves physical contradictions via two documented strategy sets — the Litvin and the Zlotin/Zusman variant — each linked to the recommended Inventive Principles. |
 | [`problem-operator`](technical-triz/skills/problem-operator/) | Problem-Oriented Nine Screen Approach — solves a problem across a prevention / mitigation / Plan B timeline at all three system levels. |
-| [`resource-analysis`](technical-triz/skills/resource-analysis/) | Discovers and exploits the six TRIZ resource types (MATChEMIB). |
+| [`resource-analysis`](technical-triz/skills/resource-analysis/) | Discovers and exploits the six TRIZ resource types (MATChEMIB — nine fields), then runs the Ideal Final Result (IFR) with those resources as the X. |
 | [`root-cause-analysis`](technical-triz/skills/root-cause-analysis/) | Systematic RCA for engineering failures based on scientific principles and physical parameters. |
 | [`root-conflict-analysis`](technical-triz/skills/root-conflict-analysis/) | Root Conflict Analysis (RCA+) — decomposes problems into underlying contradictions. |
 | [`smart-little-people`](technical-triz/skills/smart-little-people/) | Smart Little People (SLP) modelling to overcome psychological inertia. |

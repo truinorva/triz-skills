@@ -228,8 +228,9 @@ underlying contradiction:
 - **Technical contradiction** — one parameter improves, another worsens.
 - **Physical contradiction** — the same parameter must be in opposite states.
 
-If such contradictions exist, apply ARIZ or the separation principles to restructure the problem
-logic.
+If such contradictions exist, apply the appropriate TRIZ principles to resolve them — technical
+contradictions with the `contradiction-solver` skill, physical contradictions with the
+`physical-contradictions` skill.
 
 ---
 
