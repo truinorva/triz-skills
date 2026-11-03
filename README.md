@@ -4,7 +4,7 @@
 
 This repository contains a growing, curated library of **TRIZ** (Theory of Inventive Problem Solving) **Skills for Anthropic's Claude and OpenAI's ChatGPT** – covering both **technical** and **business** TRIZ, from Contradiction Analysis and Function Analysis to Trimming, the 76 Standard Solutions, Ideality, and Resource Analysis.
 
-The repository is a **plugin marketplace**: Claude Code, Claude organizations, ChatGPT workspaces and Codex install the Skills straight from here, as two plugins – `technical-triz` and `business-triz`. Every Skill is kept **unzipped, one folder per Skill**, so it can be read, edited, and extended with any standard text editor (e.g. VS Code, Notepad++, BBEdit) and collaborated on with normal Git workflows.
+The repository is a **plugin marketplace**: Claude.ai, Claude Code, ChatGPT and Codex install the Skills straight from here, as two plugins – `technical-triz` and `business-triz`. Every Skill is kept **unzipped, one folder per Skill**, so it can be read, edited, and extended with any standard text editor (e.g. VS Code, Notepad++, BBEdit) and collaborated on with normal Git workflows.
 
 > Maintained by **Truinorva**. Companion repository to [`triz-prompt-engineering`](https://github.com/jenson500/triz-prompt-engineering).
 
@@ -109,7 +109,7 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | [`76-standard-solutions`](technical-triz/skills/76-standard-solutions/) | Substance-Field (Su-Field) modelling and the 76 Standard Solutions across 5 classes. |
 | [`cause-effect-chain-analysis`](technical-triz/skills/cause-effect-chain-analysis/) | Cause & Effect Chain Analysis (CECA) / RCA to trace defects to root causes and contradictions. |
 | [`contradiction-solver`](technical-triz/skills/contradiction-solver/) | Resolves engineering contradictions via the Altshuller Matrix and Matrix 2003, and applies the 40 Inventive Principles. Hands physical contradictions over to [`physical-contradictions`](technical-triz/skills/physical-contradictions/). |
-| [`derivative-resources`](technical-triz/skills/derivative-resources/) | Transforms the resources a system already has into derivative resources (R0 → R1 → R2), useful functions and solution concepts. Continues [`resource-analysis`](technical-triz/skills/resource-analysis/). |
+| [`derivative-resources`](technical-triz/skills/derivative-resources/) | Transforms the resources a system already has into derivative resources (R0 → R1 → R2 → R3), useful functions and solution concepts. Continues [`resource-analysis`](technical-triz/skills/resource-analysis/). |
 | [`feature-transfer`](technical-triz/skills/feature-transfer/) | Enhances a system by adopting beneficial features from alternative/competing systems. |
 | [`function-analysis`](technical-triz/skills/function-analysis/) | Maps tools-actions-objects and reveals a technical system's main function — automatic, semi-automatic and interactive modes, with a CSV export of the function model. |
 | [`function-analysis-advanced`](technical-triz/skills/function-analysis-advanced/) | Adds spatio-temporal (when/where) considerations to Function Analysis. |
@@ -135,7 +135,16 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 
 ## ▶️ Installing the Skills
 
-The marketplace is called `truinorva-triz` and offers two plugins. Install one or both; each brings all Skills of its family. Once installed, describe your problem and the assistant activates the matching Skill based on its `description`.
+The marketplace is called `truinorva-triz` and offers two plugins, **Technical TRIZ** (`technical-triz`) and **Business TRIZ** (`business-triz`). Install one or both; each brings all Skills of its family. Once installed, describe your problem and the assistant activates the matching Skill based on its `description`.
+
+### Claude.ai, the Claude desktop app and Cowork
+
+1. Open **Customize → Plugins**, then **Add → Add marketplace**.
+2. Enter `truinorva/triz-skills`, then add `technical-triz` and `business-triz`.
+
+The plugins then belong to your Claude account: they work in chats on the web, in the desktop app and on mobile, in Cowork, and they reach Claude Code as synced plugins at its next session start. A single Skill can still be uploaded on its own, as a ZIP from the [latest release](../../releases/latest) under **Customize → Skills** (see [Archive layout](#archive-layout-single-skill-uploads)).
+
+In a Team or Enterprise organization, the Owner decides whether members may add marketplaces themselves. An Owner can also hand the plugins to everyone under **Organization settings → Plugins & skills → Add → Sync from GitHub** — but organization sync accepts only **private or internal** repositories, so sync a private copy of this repository and pull new releases into that copy.
 
 ### Claude Code
 
@@ -145,40 +154,41 @@ claude plugin install technical-triz@truinorva-triz
 claude plugin install business-triz@truinorva-triz
 ```
 
-Inside a session, `/plugin marketplace add truinorva/triz-skills` and `/plugin install technical-triz@truinorva-triz` do the same. The Skills then appear under the plugin's name, e.g. `technical-triz:contradiction-solver`, from the next session on.
+Inside a session, `/plugin marketplace add truinorva/triz-skills` and `/plugin install technical-triz@truinorva-triz` do the same. The Skills then appear under the plugin's name, e.g. `technical-triz:contradiction-solver`, from the next session on. A command-line install stays on that machine; if you added the plugins on your Claude account instead, Claude Code loads them from there and needs no install of its own.
 
 To check the installation, `claude plugin list` shows both plugins as enabled, and `claude plugin details technical-triz@truinorva-triz` lists the Skills the plugin loaded. If you installed Skills from an earlier release ZIP, see [Switching from the ZIP releases](#switching-from-the-zip-releases).
 
-### Claude organizations (Claude.ai, Claude Desktop, Cowork)
+### ChatGPT desktop app
 
-An organization Owner syncs the marketplace under **Organization settings → Plugins & skills → Add → Sync from GitHub** and sets who gets which plugin. Claude's organization sync accepts only **private or internal** marketplace repositories, so sync a private copy of this repository, not `truinorva/triz-skills` itself, and pull new releases into that copy.
+1. Open **Plugins**, then **Add → Add plugin marketplace**.
+2. Enter **Source** `https://github.com/truinorva/triz-skills` and **Git ref** `main`, leave *Sparse paths* empty, and select **Add marketplace**.
+3. On the **Personal** tab, the marketplace `truinorva-triz` lists **Technical TRIZ** and **Business TRIZ**. Select **+** next to each plugin you want.
+4. Start a new chat.
 
-### Claude.ai without an organization
-
-Download the Skill ZIPs from the [latest release](../../releases/latest) and upload each one under **Customize → Skills** — one archive per Skill (see [Archive layout](#archive-layout-single-skill-uploads)). This is the way into Claude.ai chats, on the web and in the Chat of the desktop app: the plugins exist only in Claude Code and never reach them. Skills uploaded here also load in Claude Code when you sign in with the same account; see [Switching from the ZIP releases](#switching-from-the-zip-releases) for what that means next to the plugins.
+The app keeps an installed plugin per version. If a plugin still shows its old content after a release, refresh the marketplace on the **Plugins** page, then remove the plugin and add it again.
 
 ### ChatGPT workspaces (Business, Enterprise, Edu)
 
-A workspace admin imports the marketplace under **Plugins → Add → Import marketplace** in the workspace's admin settings: repository `truinorva/triz-skills`, *Path* left empty. Then set the installation policy (*Available* or *Installed*) per role for `technical-triz` and `business-triz`. The workspace picks up changes from the repository daily; **Sync now** fetches them at once. Members cannot import a marketplace themselves.
+To hand the plugins to a whole workspace, an admin imports the marketplace under **Plugins → Add → Import marketplace** in the workspace's admin settings: repository `truinorva/triz-skills`, *Path* left empty. Then set the installation policy (*Available* or *Installed*) per role for `technical-triz` and `business-triz`. The workspace picks up changes from the repository daily; **Sync now** fetches them at once. Only admins can import for the workspace — for yourself, the desktop-app route above is enough.
 
-### Codex and the ChatGPT desktop app
+### Codex CLI
 
 ```bash
 codex plugin marketplace add truinorva/triz-skills
 ```
 
-Then install `technical-triz` and/or `business-triz` from `/plugins` in Codex or from the **Plugins** tab of the desktop app, and start a new chat.
+Then install `technical-triz` and/or `business-triz` from `/plugins`, and start a new session.
 
 ### Switching from the ZIP releases
 
-Releases up to v1.0.1 shipped the Skills only as ZIPs. In Claude Code, copies installed from them stay active next to the plugins, so Claude Code then knows each Skill twice, under its plain name and as `technical-triz:…` or `business-triz:…`: which copy answers is left to chance, and every session pays for both descriptions. Once the plugins are installed, take the old copies out of Claude Code — but only there.
+Releases up to v1.0.1 shipped the Skills only as ZIPs. In Claude Code, copies installed from them stay active next to the plugins, so Claude Code then knows each Skill twice, under its plain name and as `technical-triz:…` or `business-triz:…`: which copy answers is left to chance, and every session pays for both descriptions. Once the plugins are installed, take the old copies out.
 
-**Claude Code** — move the Skill folders out of `~/.claude/skills/`. These commands move only the 26 TRIZ Skills of the ZIP releases, into a backup folder you can delete once the plugins work.
+**Claude Code** — move the Skill folders out of `~/.claude/skills/`. These commands move only the TRIZ Skills that have shipped as ZIPs, into a backup folder you can delete once the plugins work.
 
 macOS / Linux:
 
 ```bash
-skills="76-standard-solutions business-function-analysis cause-effect-chain-analysis contradiction-solver feature-transfer function-analysis function-analysis-advanced function-interaction-analysis function-oriented-search ideality innovation-checklist interactive-trimming mpv-analysis patent-analyzer perception-mapping physical-contradictions problem-operator resource-analysis root-cause-analysis root-conflict-analysis smart-little-people solutions-at-system-levels sustainability-assessment system-description system-operator trimming"
+skills="76-standard-solutions business-function-analysis cause-effect-chain-analysis contradiction-solver derivative-resources feature-transfer function-analysis function-analysis-advanced function-interaction-analysis function-oriented-search ideality innovation-checklist interactive-trimming mpv-analysis patent-analyzer perception-mapping physical-contradictions problem-operator resource-analysis root-cause-analysis root-conflict-analysis smart-little-people solutions-at-system-levels sustainability-assessment system-description system-operator trimming"
 mkdir -p ~/.claude/skills-before-plugins
 for s in $skills; do [ -d ~/.claude/skills/$s ] && mv ~/.claude/skills/$s ~/.claude/skills-before-plugins/; done
 ```
@@ -186,7 +196,7 @@ for s in $skills; do [ -d ~/.claude/skills/$s ] && mv ~/.claude/skills/$s ~/.cla
 Windows (PowerShell):
 
 ```powershell
-$skills = '76-standard-solutions','business-function-analysis','cause-effect-chain-analysis','contradiction-solver','feature-transfer','function-analysis','function-analysis-advanced','function-interaction-analysis','function-oriented-search','ideality','innovation-checklist','interactive-trimming','mpv-analysis','patent-analyzer','perception-mapping','physical-contradictions','problem-operator','resource-analysis','root-cause-analysis','root-conflict-analysis','smart-little-people','solutions-at-system-levels','sustainability-assessment','system-description','system-operator','trimming'
+$skills = '76-standard-solutions','business-function-analysis','cause-effect-chain-analysis','contradiction-solver','derivative-resources','feature-transfer','function-analysis','function-analysis-advanced','function-interaction-analysis','function-oriented-search','ideality','innovation-checklist','interactive-trimming','mpv-analysis','patent-analyzer','perception-mapping','physical-contradictions','problem-operator','resource-analysis','root-cause-analysis','root-conflict-analysis','smart-little-people','solutions-at-system-levels','sustainability-assessment','system-description','system-operator','trimming'
 $backup = "$HOME\.claude\skills-before-plugins"
 New-Item -ItemType Directory -Force $backup | Out-Null
 foreach ($s in $skills) { if (Test-Path "$HOME\.claude\skills\$s") { Move-Item "$HOME\.claude\skills\$s" $backup } }
@@ -194,7 +204,9 @@ foreach ($s in $skills) { if (Test-Path "$HOME\.claude\skills\$s") { Move-Item "
 
 A project can hold copies too, in its own `.claude/skills/`; move those the same way.
 
-**Claude.ai** — leave the Skills you uploaded under **Customize → Skills** switched on. The plugins exist only in Claude Code, the command line and the Code tab of the desktop app; Claude.ai chats never see them, so the uploads are what keeps the Skills available there, and switching them off takes the Skills out of your chats. Uploaded Skills also load in Claude Code when you sign in with the same account, which leaves each Skill twice in Claude Code. As long as the uploads and the plugins carry the same release, that costs tokens but changes no answer; upload the ZIPs of each new release to keep them in step. To keep the uploads out of Claude Code anyway, set `"syncClaudeAiSkills": false` in Claude Code's settings — that stops every Skill from Claude.ai loading in Claude Code, not only the TRIZ ones.
+**Claude.ai** — Skills uploaded under **Customize → Skills** load in your chats and, with the same account, in Claude Code. Once the plugins are on your Claude account, switch the uploaded TRIZ Skills off there with the switch next to each one; a switched-off Skill stays uploaded and can be switched on again. Do it in that order: a command-line install never reaches your chats, so without the plugins on your account the uploads are the only copy your chats have.
+
+**Both at once** — if you added the plugins on your Claude account and also installed them from the Claude Code command line, and `claude plugin list` shows a plugin twice, remove the command-line copy, e.g. `claude plugin uninstall technical-triz@truinorva-triz`.
 
 ### During development
 
@@ -210,7 +222,7 @@ claude --plugin-dir ./technical-triz
 
 The repository reaches users in two ways, and they update differently:
 
-- **The marketplace is live.** Claude Code and ChatGPT read it from the default branch. ChatGPT workspaces sync it daily, independent of any tag, so whatever is merged into `main` reaches them — keep `main` releasable. Claude Code keeps users on the `version` in each `plugin.json` and offers an update only when that version changes.
+- **The marketplace is live.** Claude Code and ChatGPT read it from the default branch. ChatGPT workspaces sync it daily, independent of any tag, so whatever is merged into `main` reaches them — keep `main` releasable. Claude Code and the ChatGPT desktop app keep an installed plugin per `version` and update it only when that version changes, so once a release is out, any further change to a plugin needs a new version to reach existing installs.
 - **The ZIPs are per release.** They are build artefacts, not repository content: never committed (`dist/` and `*.zip` are git-ignored), rebuilt from the Skill folders, and published as GitHub Release assets. Each Skill exists exactly once in Git: as its editable folder.
 
 ### Cutting a release
@@ -219,7 +231,7 @@ The repository reaches users in two ways, and they update differently:
 2. Tag the commit and push the tag:
 
    ```bash
-   git tag -a v1.1.0 -m "Release v1.1.0" && git push origin v1.1.0
+   git tag -a v1.2.0 -m "Release v1.2.0" && git push origin v1.2.0
    ```
 
 The [`Package Skills`](.github/workflows/release.yml) workflow refuses a tag whose version differs from the plugins' version, then builds all archives and attaches them to the release: one ZIP per Skill plus `SHA256SUMS.txt` — and deliberately no combined "all Skills" archive (see [Archive layout](#archive-layout-single-skill-uploads)).
