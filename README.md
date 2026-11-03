@@ -109,7 +109,7 @@ This layout mirrors `triz-prompt-engineering`: the same separation of *business*
 | [`76-standard-solutions`](technical-triz/skills/76-standard-solutions/) | Substance-Field (Su-Field) modelling and the 76 Standard Solutions across 5 classes. |
 | [`cause-effect-chain-analysis`](technical-triz/skills/cause-effect-chain-analysis/) | Cause & Effect Chain Analysis (CECA) / RCA to trace defects to root causes and contradictions. |
 | [`contradiction-solver`](technical-triz/skills/contradiction-solver/) | Resolves engineering contradictions via the Altshuller Matrix and Matrix 2003, and applies the 40 Inventive Principles. Hands physical contradictions over to [`physical-contradictions`](technical-triz/skills/physical-contradictions/). |
-| [`derivative-resources`](technical-triz/skills/derivative-resources/) | Transforms the resources a system already has into derivative resources (R0 → R1 → R2), useful functions and solution concepts. Continues [`resource-analysis`](technical-triz/skills/resource-analysis/). |
+| [`derivative-resources`](technical-triz/skills/derivative-resources/) | Transforms the resources a system already has into derivative resources (R0 → R1 → R2 → R3), useful functions and solution concepts. Continues [`resource-analysis`](technical-triz/skills/resource-analysis/). |
 | [`feature-transfer`](technical-triz/skills/feature-transfer/) | Enhances a system by adopting beneficial features from alternative/competing systems. |
 | [`function-analysis`](technical-triz/skills/function-analysis/) | Maps tools-actions-objects and reveals a technical system's main function — automatic, semi-automatic and interactive modes, with a CSV export of the function model. |
 | [`function-analysis-advanced`](technical-triz/skills/function-analysis-advanced/) | Adds spatio-temporal (when/where) considerations to Function Analysis. |
@@ -183,12 +183,12 @@ Then install `technical-triz` and/or `business-triz` from `/plugins`, and start 
 
 Releases up to v1.0.1 shipped the Skills only as ZIPs. In Claude Code, copies installed from them stay active next to the plugins, so Claude Code then knows each Skill twice, under its plain name and as `technical-triz:…` or `business-triz:…`: which copy answers is left to chance, and every session pays for both descriptions. Once the plugins are installed, take the old copies out.
 
-**Claude Code** — move the Skill folders out of `~/.claude/skills/`. These commands move only the 26 TRIZ Skills of the ZIP releases, into a backup folder you can delete once the plugins work.
+**Claude Code** — move the Skill folders out of `~/.claude/skills/`. These commands move only the TRIZ Skills that have shipped as ZIPs, into a backup folder you can delete once the plugins work.
 
 macOS / Linux:
 
 ```bash
-skills="76-standard-solutions business-function-analysis cause-effect-chain-analysis contradiction-solver feature-transfer function-analysis function-analysis-advanced function-interaction-analysis function-oriented-search ideality innovation-checklist interactive-trimming mpv-analysis patent-analyzer perception-mapping physical-contradictions problem-operator resource-analysis root-cause-analysis root-conflict-analysis smart-little-people solutions-at-system-levels sustainability-assessment system-description system-operator trimming"
+skills="76-standard-solutions business-function-analysis cause-effect-chain-analysis contradiction-solver derivative-resources feature-transfer function-analysis function-analysis-advanced function-interaction-analysis function-oriented-search ideality innovation-checklist interactive-trimming mpv-analysis patent-analyzer perception-mapping physical-contradictions problem-operator resource-analysis root-cause-analysis root-conflict-analysis smart-little-people solutions-at-system-levels sustainability-assessment system-description system-operator trimming"
 mkdir -p ~/.claude/skills-before-plugins
 for s in $skills; do [ -d ~/.claude/skills/$s ] && mv ~/.claude/skills/$s ~/.claude/skills-before-plugins/; done
 ```
@@ -196,7 +196,7 @@ for s in $skills; do [ -d ~/.claude/skills/$s ] && mv ~/.claude/skills/$s ~/.cla
 Windows (PowerShell):
 
 ```powershell
-$skills = '76-standard-solutions','business-function-analysis','cause-effect-chain-analysis','contradiction-solver','feature-transfer','function-analysis','function-analysis-advanced','function-interaction-analysis','function-oriented-search','ideality','innovation-checklist','interactive-trimming','mpv-analysis','patent-analyzer','perception-mapping','physical-contradictions','problem-operator','resource-analysis','root-cause-analysis','root-conflict-analysis','smart-little-people','solutions-at-system-levels','sustainability-assessment','system-description','system-operator','trimming'
+$skills = '76-standard-solutions','business-function-analysis','cause-effect-chain-analysis','contradiction-solver','derivative-resources','feature-transfer','function-analysis','function-analysis-advanced','function-interaction-analysis','function-oriented-search','ideality','innovation-checklist','interactive-trimming','mpv-analysis','patent-analyzer','perception-mapping','physical-contradictions','problem-operator','resource-analysis','root-cause-analysis','root-conflict-analysis','smart-little-people','solutions-at-system-levels','sustainability-assessment','system-description','system-operator','trimming'
 $backup = "$HOME\.claude\skills-before-plugins"
 New-Item -ItemType Directory -Force $backup | Out-Null
 foreach ($s in $skills) { if (Test-Path "$HOME\.claude\skills\$s") { Move-Item "$HOME\.claude\skills\$s" $backup } }
@@ -231,7 +231,7 @@ The repository reaches users in two ways, and they update differently:
 2. Tag the commit and push the tag:
 
    ```bash
-   git tag -a v1.1.0 -m "Release v1.1.0" && git push origin v1.1.0
+   git tag -a v1.2.0 -m "Release v1.2.0" && git push origin v1.2.0
    ```
 
 The [`Package Skills`](.github/workflows/release.yml) workflow refuses a tag whose version differs from the plugins' version, then builds all archives and attaches them to the release: one ZIP per Skill plus `SHA256SUMS.txt` — and deliberately no combined "all Skills" archive (see [Archive layout](#archive-layout-single-skill-uploads)).
